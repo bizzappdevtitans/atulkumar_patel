@@ -1,0 +1,23 @@
+{
+    "name": "School Management",
+    "author": "atul",
+    "description": "school management project",
+    "sequence": 0,
+    "data": [
+        "security/ir.model.access.csv",
+        "views/school_detail_views.xml",
+        "views/employee_detail_views.xml",
+        "views/student_detail_views.xml",
+        "views/teachers_detail_views.xml",
+        "views/transportation_detail_views.xml",
+        "views/registration_detail_views.xml",
+        "views/fees_detail_views.xml",
+        "views/attendance_detail_views.xml",
+        "views/class_detail_views.xml",
+        "views/course_detail_views.xml",
+    ],
+    "license": "LGPL-3",
+    "installable": True,
+    "auto_install": False,
+    "application": "True",
+}
