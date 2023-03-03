@@ -23,7 +23,7 @@
 
                     <sheet>
                         <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" type="object" name="get_students" icon="fa-icon">
+                        <button class="oe_highlight" type="object" name="get_students" icon="fa-icon">
                             <span class="o_stat_text">Count</span>
                             <field string="Students" name="students_count" widget="statinfo"/>
                         </button>

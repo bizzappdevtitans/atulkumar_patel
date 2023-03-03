@@ -32,13 +32,6 @@ class TeachersDetail(models.Model):
             if record.age < 0:
                 raise ValidationError("Invalid age %s" % record.age)
 
-    # @api.constrains("mobile_number")
-    # def _check_mobile_no(self):
-    #     for record in self:
-    #         if len(record.mobile_number) > 15 or len(record.mobile_number) < 6:
-
-    #             raise ValidationError("Invalid mobile_number %s" % record.mobile_number)
-
     def compute_count(self):
         for record in self:
             record.students_count = self.env["student.detail"].search_count(
@@ -55,3 +48,10 @@ class TeachersDetail(models.Model):
             "domain": [("teacher", "=", self.id)],
             "context": "{'create': False}",
         }
+
+    @api.constrains("mobile_number")
+    def _check_mobile_no(self):
+        for record in self:
+            if len(record.mobile_number) > 15 or len(record.mobile_number) < 6:
+
+                raise ValidationError("Invalid mobile_number %s" % record.mobile_number)

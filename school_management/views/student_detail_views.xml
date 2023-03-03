@@ -25,9 +25,6 @@
                      <sheet>
                         <group string="Student Management">
                             <group>
-                                <field name="name"/>
-
-
                                 <field name="roll_no"/>
 
 
@@ -35,6 +32,9 @@
 
                                 <field name="student_class"/>
                                 <field name="course_id"/>
+
+                                <field name="name" filter_domain="['|',('name', 'ilike', self), ('roll_no','ilike',self)]"/>
+
                             </group>
 
 
@@ -93,10 +93,21 @@
                 <field name="name"/>
                 <field name="e_mail"/>
                 <field name="gender"/>
+                <field name="roll_no"/>
+                <filter name='male' string='Male' domain="[('gender','=','male'),('roll_no','&gt;=',12)]"/>
+                <separator/>
+
+                <filter name='female' string='Female' domain="[('gender','=','female'),('roll_no','&lt;=',6)]"/>
+
+                <filter name='other' string='Other' domain="[('gender','=','other')]"/>
+
+                <group expand="0" string="Group By">
+                    <filter string="Gender" name="group_by_gender" context="{'group_by' : 'gender'}"/>
+
+                </group>
             </search>
           </field>
         </record>
-
 
 
         <!-- action field -->
@@ -105,6 +116,7 @@
             <field name="name">Student Management</field>
            <field name="res_model">student.detail</field>
             <field name="view_mode">tree,form,search</field>
+            <field name="context">{'search_default_male': 1}</field>
         </record>
 
 
