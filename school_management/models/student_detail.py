@@ -22,7 +22,8 @@ class StudentDetail(models.Model):
         string="Gender",
     )
 
-    mobile_number = fields.Char(String="mobile number")
+    # gender = fields.Selection(selection_add=[("transgender", "Transgender")])
+    mobile_number = fields.Char(String="mobile number", required=True)
     e_mail = fields.Char(String="Email")
 
     student_stream = fields.Selection(

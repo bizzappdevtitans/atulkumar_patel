@@ -23,44 +23,69 @@
             <field name="arch" type="xml">
                 <form string="Student">
                      <sheet>
-                        <group string="Student Management">
-                            <group>
+                        <group string="Student Management" >
+                            <group >
                                 <field name="roll_no"/>
 
-
-                                <field name="fathers_name"/>
+                                <field name="name" filter_domain="['|',('name', 'ilike', self), ('roll_no','ilike',self)]"/>
+                             </group>
+                             <group>
+                                <field name="gender" string="Gender"/>
 
                                 <field name="student_class"/>
-                                <field name="course_id"/>
-
-                                <field name="name" filter_domain="['|',('name', 'ilike', self), ('roll_no','ilike',self)]"/>
-
-                            </group>
 
 
-
-                            <group>
-                                <field name="student_dob"/>
-
-                                <field name="gender"/>
-
-                                <field name="mobile_number" widget="phone"/>
-
-
-                                <field name="student_stream"/>
-
-
-                                <field name="e_mail" widget="email"/>
-
-                                <field name ="transportation"/>
-                                <field name="teacher" widget="many2one_widget"/>
-
-                              </group>
-
-
-                            <group>
                                 <field name ="fee_detail" widget="one2many"/>
+
                             </group>
+
+
+                        <notebook>
+                            <page name="info" string="student information">
+                                <group>
+
+
+                                        <field name="name" string="Name"/>
+                                        <field name="gender" string="Gender"/>
+                                        <field name="e_mail" widget="email" string="Email"/>
+                                        <field name="fathers_name" string="Fathers Name"/>
+                                        <field name="student_dob" string="DOB"/>
+                                        <field name="mobile_number" widget="phone" string="Contact"/>
+
+
+
+
+                                 </group>
+                            </page>
+
+
+                            <page name="detail" string="Student school detail">
+                                <group>
+
+
+                                        <field name="name"/>
+                                        <field name="student_stream"/>
+                                         <field name="teacher" widget="many2one_widget"/>
+                                        <field name="course_id"/>
+
+
+
+
+                                 </group>
+                            </page>
+
+
+                            <page name="transportation" string="Student transportation detail">
+                                <group>
+
+                                    <field name ="transportation"/>
+
+                                 </group>
+                            </page>
+
+                        </notebook>
+
+
 
                         </group>
                     </sheet>
@@ -94,10 +119,10 @@
                 <field name="e_mail"/>
                 <field name="gender"/>
                 <field name="roll_no"/>
-                <filter name='male' string='Male' domain="[('gender','=','male'),('roll_no','&gt;=',12)]"/>
+                <filter name='male' string='Male' domain="[('gender','=','male'),('roll_no','&gt;=',1)]"/>
                 <separator/>
 
-                <filter name='female' string='Female' domain="[('gender','=','female'),('roll_no','&lt;=',6)]"/>
+                <filter name='female' string='Female' domain="[('gender','=','female'),('roll_no','&lt;=',20)]"/>
 
                 <filter name='other' string='Other' domain="[('gender','=','other')]"/>
 

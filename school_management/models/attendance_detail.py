@@ -6,7 +6,7 @@ class AttendanceDetail(models.Model):
     _name = "attendance.detail"
     _description = "school attendance detail"
 
-    name = fields.Char(string="Name")
+    name = fields.Char(string="Class Name")
 
     student = fields.Many2one("student.detail", string="Student")
     class_id = fields.Many2one("class.detail", string="Class")

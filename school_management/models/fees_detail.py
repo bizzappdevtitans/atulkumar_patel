@@ -9,11 +9,12 @@ class FeesDetail(models.Model):
     _description = "school"
 
     name = fields.Char(string="Name")
-    tution_fee = fields.Float(string="Tution fee")
-    book_uniform_cost = fields.Float(string="Book & Uniform fee")
-    activity_fee = fields.Float(string="Activity Fee")
+    tution_fee = fields.Float(string="Tution fee", required=True)
+    book_uniform_cost = fields.Float(string="Book & Uniform fee", required=True)
+    activity_fee = fields.Float(string="Activity Fee", required=True)
     total_fee = fields.Float(string="Total fee", store=True, compute="_calculate_fee")
-
+    # currency_id = fields.Many2one("res.currency", string="Currency")
+    # subtotal = fields.Monetary(string="subtotal")
     roll_no = fields.Integer(string="Roll No")
     student_class = fields.Char(string="Class")
     student_gender = fields.Selection(
@@ -23,7 +24,7 @@ class FeesDetail(models.Model):
         ],
         string="Gender",
     )
-    mobile_number = fields.Char(String="mobile number")
+    mobile_number = fields.Char(String="mobile number", required=True)
     e_mail = fields.Char(String="email")
     student_stream = fields.Selection(
         [
@@ -48,8 +49,6 @@ class FeesDetail(models.Model):
                 record.total_fee = (
                     record.tution_fee + record.book_uniform_cost + record.activity_fee
                 )
-            else:
-                record.total_fee = " "
 
     @api.constrains("mobile_number")
     def _check_mobile_no(self):

@@ -9,3 +9,4 @@ from . import attendance_detail
 
 from . import class_detail
 from . import course_detail
+

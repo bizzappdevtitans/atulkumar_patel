@@ -9,7 +9,7 @@
         <menuitem id="course_detail_menu"
           name="Course"
           parent="school_management_menu_root"
-           action="action_course_detail"/>
+          action="action_course_detail"/>
 
 
 

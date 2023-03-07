@@ -25,6 +25,13 @@
                                 <field name ="address"/>
                                 <field name='contact' widget='phone'/>
                             </group>
+                            <group>
+                                <field name="email" />
+                                <field name="image" />
+                                <field name="active"/>
+                                <field name="refers_to" />
+
+                            </group>
                         </group>
                     </sheet>
                 </form>

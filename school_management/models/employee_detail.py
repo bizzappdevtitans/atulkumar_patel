@@ -16,7 +16,7 @@ class EmployeeDetail(models.Model):
         ],
         string="Gender",
     )
-    mobile_number = fields.Char(String="mobile number")
+    mobile_number = fields.Char(String="mobile number", required=True)
     e_mail = fields.Char(String="email")
     employee_type = fields.Char(string="Employee Type")
 

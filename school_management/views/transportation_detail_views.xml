@@ -9,7 +9,7 @@
         <menuitem id="Transportation_management_menu"
           name="Transportation"
           parent="school_management_menu_root"
-          action="action_transportation_detail"/>
+        action="action_transportation_detail"/>
 
 
 

@@ -9,7 +9,7 @@
         <menuitem id="attendance_detail_menu"
           name="Attendance"
           parent="school_management_menu_root"
-          action="action_attendance_detail"/>
+           action="action_attendance_detail"/>
 
 
 
@@ -37,7 +37,8 @@
 
                             <group>
                                 <field name="note"/>
-                                <field name="status" widget="statusbar"/>
+                                <field name="status"/>
+                                <!-- widget="statusbar"  -->
 
                                 <field name="date_field" widget="remaining_days"/>
 

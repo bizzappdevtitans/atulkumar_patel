@@ -42,7 +42,8 @@
 
                                 <field name="book_uniform_cost"/>
                                 <field name ="total_fee"/>
-
+                              <!--   <field name ="subtotal"/>
+                                <field name="currency_id"/ -->>
                                 <field name="student_gender"/>
 
 
