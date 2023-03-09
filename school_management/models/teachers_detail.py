@@ -6,7 +6,7 @@ class TeachersDetail(models.Model):
     _name = "teachers.detail"
     _description = "school"
 
-    teacher_id = fields.Integer(string="Teacher_id")
+    teacher_id = fields.Char(string="Teacher_id")
     name = fields.Char(string="Name")
     age = fields.Integer(string="Age")
     teacher_dob = fields.Date(string="Date of Birth")

@@ -3,11 +3,12 @@
    <data>
 
         <menuitem id="school_management_menu_root"
-            name="School Management"/>
+          name="School Management"/>
 
 
-        <menuitem id="student_detail_menu"
+         <menuitem id="student_detail_menu"
           name="Student"
+
           parent="school_management_menu_root"
           action="action_student_detail"/>
 
@@ -22,7 +23,18 @@
             <field name="model">student.detail</field>
             <field name="arch" type="xml">
                 <form string="Student">
+                    <header>
+                        <field name="state" widget="statusbar" nolable="1" options="{'clickable':'1'}"/>
+
+                    </header>
                      <sheet>
+                        <div class='oe_title'>
+                            <h1>
+                                <field name='priority' widget="priority" class='mr-3'/>
+
+                             </h1>
+                         </div>
+
                         <group string="Student Management" >
                             <group >
                                 <field name="roll_no"/>
@@ -30,9 +42,9 @@
                                 <field name="name" filter_domain="['|',('name', 'ilike', self), ('roll_no','ilike',self)]"/>
                              </group>
                              <group>
-                                <field name="gender" string="Gender"/>
+                                <field name="gender" string="Gender" />
 
-                                <field name="student_class"/>
+                                <field name="student_class" />
 
 
                                 <field name ="fee_detail" widget="one2many"/>
@@ -41,7 +53,7 @@
 
 
                         <notebook>
-                            <page name="info" string="student information">
+                            <page name="info" string="student information" groups="school_management.group_auto_done_setting">
                                 <group>
 
 
@@ -92,6 +104,13 @@
                 </form>
             </field>
         </record>
+
+
+<!-- security groups -->
+
+
+
+
 
 
 <!-- tree tag start from here-->

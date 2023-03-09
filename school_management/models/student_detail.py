@@ -33,8 +33,25 @@ class StudentDetail(models.Model):
         ],
         string="Stream",
     )
+
+    priority = fields.Selection(
+        [("0", "Normal"), ("1", "Low"), ("2", " high"), ("3", "very high")],
+        string="Status",
+        default="1",
+    )
+
+    state = fields.Selection(
+        [
+            ("initial_state", "Initial state"),
+            ("inprogress", "Inprogress"),
+            ("done", "Done"),
+            ("cancel", "Cancel"),
+        ],
+        default="initial_state",
+        string="Status",
+    )
     course_id = fields.Many2many("course.detail", string="course")
-    teacher = fields.Many2one("teachers.detail")
+    teacher = fields.Many2many("teachers.detail")
 
     transportation = fields.Many2one("transportation.detail")
 

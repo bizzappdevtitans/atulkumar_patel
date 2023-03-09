@@ -3,11 +3,12 @@
    <data>
 
         <menuitem id="school_management_menu_root"
-            name="School Management"/>
+            name="School Management" />
 
 
         <menuitem id="Teachers_management_menu"
           name="Teachers"
+          groups="group_school_management_teacher"
           parent="school_management_menu_root"
          action="action_teachers_detail"/>
 

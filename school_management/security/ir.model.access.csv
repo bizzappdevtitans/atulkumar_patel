@@ -7,8 +7,15 @@ school_management.access_course_detail,access_course_detail,school_management.mo
 school_management.access_school_detail,access_school_detail,school_management.model_school_detail,base.group_user,1,1,1,1
 school_management.access_employee_detail,access_employee_detail,school_management.model_employee_detail,base.group_user,1,1,1,1
 school_management.access_teachers_detail,access_teachers_detail,school_management.model_teachers_detail,base.group_user,1,1,1,1
+
+
+
+
+
 school_management.access_transportation_detail,access_transportation_detail,school_management.model_transportation_detail,base.group_user,1,1,1,1
+
 school_management.access_student_detail,access_student_detail,school_management.model_student_detail,base.group_user,1,1,1,1
+
 
 
 

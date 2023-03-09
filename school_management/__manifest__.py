@@ -15,6 +15,7 @@
         "views/attendance_detail_views.xml",
         "views/class_detail_views.xml",
         "views/course_detail_views.xml",
+        "security/security_access_right.xml",
     ],
     "license": "LGPL-3",
     "installable": True,

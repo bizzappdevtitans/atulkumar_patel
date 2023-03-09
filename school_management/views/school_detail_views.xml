@@ -39,6 +39,9 @@
         </record>
 
 
+
+
+
 <!-- tree tag start from here-->
 
       <record id="school_detail_view_tree" model="ir.ui.view">

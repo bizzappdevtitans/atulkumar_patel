@@ -8,6 +8,7 @@
 
         <menuitem id="employee_detail_menu"
           name="Employee"
+          groups="group_school_management_employee"
           parent="school_management_menu_root"
           action="action_employee_detail"/>
 
