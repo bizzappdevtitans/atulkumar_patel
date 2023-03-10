@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+
+        <menuitem id="library_management_menu_root"
+            name="Library Management"/>
+
+         <menuitem id="readers_detail_menu"
+          name="Readers"
+
+          parent="library_management_menu_root"
+         action="action_readers_detail"/>
+
+
+
+
+
+
+<!-- form tag start from here-->
+
+         <record id="readers_detail_view_form" model="ir.ui.view">
+            <field name="name">readers.view.form</field>
+            <field name="model">readers.detail</field>
+            <field name="arch" type="xml">
+                <form string="Readers">
+                    <sheet>
+                        <group string="Readers Management">
+                            <group>
+                                <field name="name"/>
+
+                            </group>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+
+<!-- tree tag start from here-->
+
+      <record id="readers_detail_view_tree" model="ir.ui.view">
+         <field name="name">readers.view.tree</field>
+         <field name="model">readers.detail</field>
+         <field name="arch" type="xml">
+             <tree>
+                 <field name="name" string="Name" required="1"/>
+             </tree>
+         </field>
+      </record>
+
+
+        <!-- action field -->
+
+      <record model="ir.actions.act_window" id="action_readers_detail">
+            <field name="name">Readers Management</field>
+           <field name="res_model">readers.detail</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+
+
+    </data>
+</odoo>
+
+
+
+
