@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+
+        <menuitem id="library_management_menu_root"
+            name="Library Management"/>
+
+         <menuitem id="books_detail_menu"
+          name="Books detail"
+          groups="group_library_management_books"
+          parent="library_management_menu_root"
+          action="action_books_detail"/>
+
+
+
+
+
+
+<!-- form tag start from here-->
+
+         <record id="books_detail_view_form" model="ir.ui.view">
+            <field name="name">books.detail.view.form</field>
+            <field name="model">books.detail</field>
+            <field name="arch" type="xml">
+                <form string="Books detail">
+                    <sheet>
+                        <group string="Books detail">
+                            <group>
+                                <field name="title" string="Title"/>
+                                <field name="author" string="Author"/>
+                                <field name="publisher" string="Publisher"/>
+                                <field name="publication_year" string="Publication Year"/>
+                                <field name="isbn" string="ISBN"/>
+                                <field name="genre" string="Genre"/>
+                                <field name="borrow_ids" string="Borrow id"/>
+
+                            </group>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+
+<!-- tree tag start from here-->
+
+      <record id="books_detail_view_tree" model="ir.ui.view">
+         <field name="name">books.detail.view.tree</field>
+         <field name="model">books.detail</field>
+         <field name="arch" type="xml">
+             <tree>
+                <field name="title" string="Title"/>
+
+                <field name="author" string="Author"/>
+                <field name="publisher" string="Publisher"/>
+                <field name="publication_year" string="Publication Year"/>
+                <field name="isbn" string="ISBN"/>
+                <field name="genre" string="Genre"/>
+
+             </tree>
+         </field>
+      </record>
+
+
+        <!-- action field -->
+
+      <record model="ir.actions.act_window" id="action_books_detail">
+            <field name="name">Books Detail</field>
+           <field name="res_model">books.detail</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+
+
+    </data>
+</odoo>
+
+
+
+
+
+
+
