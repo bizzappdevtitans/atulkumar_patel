@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+   <data>
+<!-- school management main menu -->
+        <menuitem id="school_management_menu_root"
+            name="School Management" />
+
+<!-- teacher detail sub menu -->
+        <menuitem id="Teachers_management_menu"
+          name="Teachers"
+          groups="group_school_management_teacher"
+          parent="school_management_menu_root"
+          action="action_teachers_detail"/>
+
+
+<!-- form tag start from here-->
+         <record id="teachers_detail_view_form" model="ir.ui.view">
+            <field name="name">teachers.view.form</field>
+            <field name="model">teachers.detail</field>
+            <field name="arch" type="xml">
+                <form string="Teachers">
+
+
+
+                    <sheet>
+                        <!-- smart button -->
+                        <div class="oe_button_box" name="button_box">
+                        <button class="oe_highlight" type="object" name="get_students" icon="fa-icon">
+                            <span class="o_stat_text">Count</span>
+                            <field string="Students" name="students_count" widget="statinfo"/>
+                        </button>
+                        </div>
+
+                        <!-- sequence generator -->
+                            <h2>
+                             <field name="teacher_seq"/>
+                         </h2>
+
+                        <group string="Teachers Management">
+                            <group>
+                                <field name="name"/>
+
+                                <field name="student_id"/>
+
+                                <field name="age"/>
+
+                                <field name="teacher_dob"/>
+
+                            </group>
+                            <group>
+                                <field name="teacher_gender"/>
+
+
+                                <field name="mobile_number" widget="phone"/>
+
+                                <field name="e_mail" widget="email"/>
+
+                                <field name="teacher_stream"/>
+                                <field name="course_id"/>
+                            </group>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+<!-- tree tag start from here-->
+
+      <record id="teachers_detail_view_tree" model="ir.ui.view">
+         <field name="name">teachers.view.tree</field>
+         <field name="model">teachers.detail</field>
+         <field name="arch" type="xml">
+             <tree>
+                 <field name="name" required="1"/>
+                 <field name="student_id"/>
+
+                <field name="age"/>
+
+                <field name="teacher_dob"/>
+             </tree>
+         </field>
+      </record>
+
+
+      <!-- action field -->
+
+      <record model="ir.actions.act_window" id="action_teachers_detail">
+            <field name="name">Teachers Management</field>
+            <field name="res_model">teachers.detail</field>
+            <field name="view_mode">tree,form</field>
+
+        </record>
+
+
+
+
+    </data>
+</odoo>

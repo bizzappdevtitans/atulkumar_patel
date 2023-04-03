@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+<!-- school management main menu -->
+        <menuitem id="school_management_menu_root"
+            name="School Management"/>
+
+<!-- class detail submenu -->
+        <menuitem id="class_detail_menu"
+          name="Class"
+          parent="school_management_menu_root"
+          action="action_class_detail"/>
+
+
+
+<!-- form tag start from here-->
+
+         <record id="class_detail_view_form" model="ir.ui.view">
+            <field name="name">class.view.form</field>
+            <field name="model">class.detail</field>
+            <field name="arch" type="xml">
+                <form string="Class">
+                    <sheet>
+                        <!-- this field is for sequence no -->
+                         <h2>
+                             <field name="class_seq"/>
+                         </h2>
+
+                        <group string="Class Management">
+                            <group>
+                                <field name="name"/>
+
+
+                                <field name="code"/>
+
+
+                                <field name="teachers_id"/>
+
+                             </group>
+
+
+                              <group>
+
+                                <field name="course_id" widget="selection"/>
+
+                                <field name="student_id" widget="many2many_checkboxes"/>
+
+                            </group>
+
+
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+<!-- tree tag start from here-->
+
+      <record id="class_detail_view_tree" model="ir.ui.view">
+         <field name="name">class.view.tree</field>
+         <field name="model">class.detail</field>
+         <field name="arch" type="xml">
+             <tree>
+                 <field name="name" required="1"/>
+
+                <field name="code"/>
+
+
+                 <field name="teachers_id"/>
+             </tree>
+         </field>
+      </record>
+
+
+        <!-- action field -->
+
+      <record model="ir.actions.act_window" id="action_class_detail">
+            <field name="name">Class Management</field>
+           <field name="res_model">class.detail</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+
+
+    </data>
+</odoo>
+

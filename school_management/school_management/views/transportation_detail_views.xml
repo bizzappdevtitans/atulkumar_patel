@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+   <!-- school management main menu -->
+        <menuitem id="school_management_menu_root"
+            name="School Management"/>
+
+<!-- transportation sub menu -->
+
+        <menuitem id="Transportation_management_menu"
+          name="Transportation"
+          parent="school_management_menu_root"
+          action="action_transportation_detail"/>
+
+
+
+<!-- form tag start from here-->
+
+        <record id="transportation_detail_view_form" model="ir.ui.view">
+            <field name="name">transportation.view.form</field>
+            <field name="model">transportation.detail</field>
+            <field name="arch" type="xml">
+                <form string="Transportation">
+                    <sheet>
+                        <!-- sequence generator -->
+                        <h2>
+                             <field name="trans_seq"/>
+                         </h2>
+                         <!-- group tag -->
+                        <group string="Transportation Management">
+                            <group>
+                                <field name="transportation_type"/>
+
+
+                                <field name="vehicle_no"/>
+
+
+                                <field name="driver_name"/>
+
+                                <field name="transportation_fare"/>
+                            </group>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+<!-- tree tag start from here-->
+
+      <record id="transportation_detail_view_tree" model="ir.ui.view">
+         <field name="name">transportation.view.tree</field>
+         <field name="model">transportation.detail</field>
+         <field name="arch" type="xml">
+             <tree>
+                 <field name="transportation_type" required="1"/>
+
+
+                 <field name="vehicle_no"/>
+
+
+                <field name="driver_name"/>
+
+                <field name="transportation_fare"/>
+             </tree>
+         </field>
+      </record>
+
+
+
+      <!-- action field -->
+
+      <record model="ir.actions.act_window" id="action_transportation_detail">
+            <field name="name">Transportation Management</field>
+            <field name="res_model">transportation.detail</field>
+            <field name="view_mode">tree,form</field>
+
+
+        </record>
+
+    </data>
+</odoo>
+
+

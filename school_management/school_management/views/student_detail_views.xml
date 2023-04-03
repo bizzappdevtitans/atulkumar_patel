@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+<!-- main menu of school management -->
+        <menuitem id="school_management_menu_root"
+          name="School Management"/>
+
+<!-- sub menu student -->
+         <menuitem id="student_detail_menu"
+          name="Student"
+          groups="group_school_management_student"
+          parent="school_management_menu_root"
+          action="action_student_detail"/>
+
+
+
+
+
+<!-- form tag start from here-->
+
+         <record id="student_detail_view_form" model="ir.ui.view">
+            <field name="name">student.view.form</field>
+            <field name="model">student.detail</field>
+            <field name="arch" type="xml">
+                <form string="Student">
+                    <!-- statusbar field -->
+                    <header>
+                        <field name="state" widget="statusbar" nolable="1" options="{'clickable':'1'}"/>
+
+                    </header>
+
+                     <sheet>
+                        <!-- priority button -->
+                        <div class='oe_title'>
+                            <h1>
+                                <field name='priority' widget="priority" class='mr-3'/>
+
+                             </h1>
+                         </div>
+
+                         <!-- sequence generator -->
+                         <h2>
+                             <field name="student_seq"/>
+                         </h2>
+
+                        <group string="Student Management" >
+                            <group >
+                                <field name="roll_no"/>
+
+                                <field name="name" filter_domain="['|',('name', 'ilike', self), ('roll_no','ilike',self)]"/>
+                             </group>
+                             <group>
+                                <field name="gender" />
+
+                                <field name="student_class" />
+
+                                <field name ="fee_detail" widget="one2many"/>
+
+                            </group>
+
+<!-- notebook tag start from here -->
+                        <notebook>
+                            <page name="info" string="student information" >
+                                <group>
+
+
+                                        <field name="name"/>
+                                        <field name="gender"/>
+                                        <field name="e_mail" widget="email"/>
+                                        <field name="fathers_name"/>
+                                        <field name="student_dob"/>
+                                        <field name="mobile_number" widget="phone"/>
+
+
+
+
+                                 </group>
+                            </page>
+
+
+                            <page name="detail" string="Student school detail">
+                                <group>
+
+
+                                        <field name="name"/>
+                                        <field name="student_stream"/>
+                                         <field name="teacher" widget="many2one_widget"/>
+                                        <field name="course_id"/>
+
+
+
+
+                                 </group>
+                            </page>
+
+
+                            <page name="transportation" string="Student transportation detail">
+                                <group>
+
+                                    <field name ="transportation"/>
+
+                                 </group>
+                            </page>
+
+                        </notebook>
+
+<!-- notbook tag end here -->
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+<!-- security groups -->
+
+
+
+
+
+
+<!-- tree tag start from here-->
+
+      <record id="student_detail_view_tree" model="ir.ui.view">
+         <field name="name">student.view.tree</field>
+         <field name="model">student.detail</field>
+         <field name="arch" type="xml">
+             <tree>
+                 <field name="name" required="1"/>
+                    <field name="gender"/>
+                    <field name="e_mail" widget="email"/>
+                    <field name="fathers_name"/>
+                    <field name="student_dob"/>
+             </tree>
+         </field>
+      </record>
+
+
+
+
+      <!-- search views -->
+       <record id="student_detail_view_search" model="ir.ui.view">
+        <field name="name">student.view.search</field>
+        <field name="model">student.detail</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="e_mail"/>
+                <field name="gender"/>
+                <field name="roll_no"/>
+                <filter name='male' string='Male' domain="[('gender','=','male'),('roll_no','&gt;=',1)]"/>
+                <separator/>
+
+                <filter name='female' string='Female' domain="[('gender','=','female'),('roll_no','&lt;=',20)]"/>
+
+                <filter name='other' string='Other' domain="[('gender','=','other')]"/>
+
+                <group expand="0" string="Group By">
+                    <filter string="Gender" name="group_by_gender" context="{'group_by' : 'gender'}"/>
+
+                </group>
+            </search>
+          </field>
+        </record>
+
+
+        <!-- action field -->
+
+      <record model="ir.actions.act_window" id="action_student_detail">
+            <field name="name">Student Management</field>
+           <field name="res_model">student.detail</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="context">{'search_default_male': 1}</field>
+        </record>
+
+
+
+
+
+
+    </data>
+</odoo>

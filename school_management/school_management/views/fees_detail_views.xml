@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+<!-- school management main menu -->
+        <menuitem id="school_management_menu_root"
+            name="School Management"/>
+
+<!-- student fee sub menu -->
+
+        <menuitem id="student_fees_detail_menu"
+          name="Student Fees"
+          parent="school_management_menu_root"
+          action="action_student_fees_detail"/>
+
+
+
+<!-- form tag start from here-->
+
+         <record id="student_fees_detail_view_form" model="ir.ui.view">
+            <field name="name">fees.view.form</field>
+            <field name="model">fees.detail</field>
+            <field name="arch" type="xml">
+                <form string="Student Fees">
+                    <sheet>
+                        <!-- sequence generator -->
+                          <h2>
+                             <field name="fee_seq"/>
+                         </h2>
+
+                        <group string="Student Fees Management">
+                            <group>
+                                <field name="name"/>
+
+
+                                <field name="roll_no"/>
+
+                                <field name="tution_fee"/>
+
+                                <field name="student_class"/>
+
+                            </group>
+
+
+
+                            <group>
+                                <field name="activity_fee"/>
+
+
+                                <field name="book_uniform_cost"/>
+                                <field name ="total_fee"/>
+
+                                <field name="student_gender"/>
+
+
+                                <field name="student_stream"/>
+
+                                <field name="mobile_number" widget ="phone"/>
+                            </group>
+                             <group>
+
+                                <field name="e_mail" widget="email"/>
+
+
+                                <field name="student_fees_detail"/>
+                                <field name="fees"/>
+                            </group>
+
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+<!-- tree tag start from here-->
+
+      <record id="student_fees_detail_view_tree" model="ir.ui.view">
+         <field name="name">fees.view.tree</field>
+         <field name="model">fees.detail</field>
+         <field name="arch" type="xml">
+             <tree>
+                 <field name="name" required="1"/>
+
+                <field name="roll_no"/>
+
+                <field name="tution_fee"/>
+
+                <field name="student_class"/>
+             </tree>
+         </field>
+      </record>
+
+
+        <!-- action field -->
+
+      <record model="ir.actions.act_window" id="action_student_fees_detail">
+            <field name="name">Student Fees Management</field>
+           <field name="res_model">fees.detail</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+
+
+    </data>
+</odoo>
+

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+
+
+         <record id="attendance_detail_seq" model="ir.sequence">
+             <field name="name">Reader Detail</field>
+             <field name="code">attendance.detail</field>
+             <field name="prefix"> A </field>
+             <field eval ="4" name="padding"/>
+
+      </record>
+
+
+         <record id="class_detail_seq" model="ir.sequence">
+             <field name="name">Class Detail</field>
+             <field name="code">class.detail</field>
+             <field name="prefix"> C </field>
+             <field eval ="4" name="padding"/>
+
+      </record>
+
+           <record id="course_detail_seq" model="ir.sequence">
+             <field name="name">Course Detail</field>
+             <field name="code">course.detail</field>
+             <field name="prefix"> C </field>
+             <field eval ="4" name="padding"/>
+
+      </record>
+
+           <record id="employee_detail_seq" model="ir.sequence">
+             <field name="name">Employee Detail</field>
+             <field name="code">employee.detail</field>
+             <field name="prefix"> E </field>
+             <field eval ="4" name="padding"/>
+
+      </record>
+
+           <record id="fees_detail_seq" model="ir.sequence">
+             <field name="name">Fees Detail</field>
+             <field name="code">fees.detail</field>
+             <field name="prefix"> F </field>
+             <field eval ="4" name="padding"/>
+
+      </record>
+
+           <record id="registration_detail_seq" model="ir.sequence">
+             <field name="name">Registration Detail</field>
+             <field name="code">registration.detail</field>
+             <field name="prefix"> R </field>
+             <field eval ="4" name="padding"/>
+
+      </record>
+
+           <record id="school_detail_seq" model="ir.sequence">
+             <field name="name">School Detail</field>
+             <field name="code">school.detail</field>
+             <field name="prefix"> S </field>
+             <field eval ="4" name="padding"/>
+
+      </record>
+
+           <record id="student_detail_seq" model="ir.sequence">
+             <field name="name">Student Detail</field>
+             <field name="code">student.detail</field>
+             <field name="prefix"> S </field>
+             <field eval ="4" name="padding"/>
+
+      </record>
+
+           <record id="teachers_detail_seq" model="ir.sequence">
+             <field name="name">Teachers Detail</field>
+             <field name="code">teachers.detail</field>
+             <field name="prefix"> T </field>
+             <field eval ="4" name="padding"/>
+
+      </record>
+
+           <record id="transportation_detail_seq" model="ir.sequence">
+             <field name="name">Transportation Detail</field>
+             <field name="code">transportation.detail</field>
+             <field name="prefix"> T </field>
+             <field eval ="4" name="padding"/>
+
+      </record>
+
+    </data>
+</odoo>
+
+

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+<!-- school management main menu -->
+        <menuitem id="school_management_menu_root"
+            name="School Management"/>
+
+<!-- course detail submenu -->
+        <menuitem id="course_detail_menu"
+          name="Course"
+          groups="group_school_management_course"
+          parent="school_management_menu_root"
+          action="action_course_detail"/>
+
+
+
+<!-- form tag start from here-->
+
+         <record id="course_detail_view_form" model="ir.ui.view">
+            <field name="name">course.view.form</field>
+            <field name="model">course.detail</field>
+            <field name="arch" type="xml">
+                <form string="Course">
+                    <sheet>
+                        <!-- sequence generator -->
+                        <h2>
+                             <field name="name"/>
+                         </h2>
+
+                        <group string="Course Management">
+                            <group>
+                                <field name="course_name"/>
+
+
+                                <field name="description" widget="text"/>
+                            </group>
+                            <group>
+                                <field name="fee"/>
+
+                                <field name="student_id"/>
+
+                                <field name ="course_url" widget="url" placeholder="www.odoo.com"/>
+
+                            </group>
+
+
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+<!-- tree tag start from here-->
+
+      <record id="course_detail_view_tree" model="ir.ui.view">
+         <field name="name">course.detail.view.tree</field>
+         <field name="model">course.detail</field>
+         <field name="arch" type="xml">
+             <tree>
+                 <field name="course_name" required="1"/>
+                 <field name="student_id"/>
+
+
+             </tree>
+         </field>
+      </record>
+
+
+
+
+
+        <!-- action field -->
+
+      <record model="ir.actions.act_window" id="action_course_detail">
+            <field name="name">Course Management</field>
+           <field name="res_model">course.detail</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+
+
+    </data>
+</odoo>
+
+

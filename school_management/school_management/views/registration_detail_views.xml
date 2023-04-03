@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+<!-- school management main menu -->
+        <menuitem id="school_management_menu_root"
+            name="School Management"/>
+
+<!-- registration sub menu -->
+        <menuitem id="registerd_student_detail_menu"
+          name="Admission Register"
+          parent="school_management_menu_root"
+          action="action_registration_detail"/>
+
+
+
+<!-- form tag start from here-->
+
+         <record id="registerd_student_detail_view_form" model="ir.ui.view">
+            <field name="name">new.student.view.form</field>
+            <field name="model">registration.detail</field>
+            <field name="arch" type="xml">
+                <form string="New Student">
+                    <sheet>
+                        <!-- sequence generator -->
+                         <h2>
+                             <field name="registration_seq"/>
+                         </h2>
+
+                        <group string="New Student Management">
+
+                            <group>
+                                <field name="roll_no"/>
+
+
+                                <field name="name"/>
+
+
+                                <field name="fathers_name"/>
+
+                                <field name="age"/>
+
+                            </group>
+
+
+                            <group>
+                                <field name="student_dob"/>
+
+
+                                <field name="student_gender"/>
+
+                                <field name="mobile_number" widget="phone"/>
+
+
+                                <field name="e_mail" widget="email"/>
+
+                                <field name="student_stream"/>
+                            </group>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+<!-- tree tag start from here-->
+
+      <record id="registerd_student_detail_view_tree" model="ir.ui.view">
+         <field name="name">new.student.view.tree</field>
+         <field name="model">registration.detail</field>
+         <field name="arch" type="xml">
+             <tree>
+                 <field name="name" required="1"/>
+                  <field name="student_dob"/>
+
+
+                <field name="student_gender"/>
+
+                 <field name="mobile_number" widget="phone"/>
+
+
+                 <field name="e_mail" widget="email"/>
+
+             </tree>
+         </field>
+      </record>
+
+
+        <!-- action field -->
+
+      <record model="ir.actions.act_window" id="action_registration_detail">
+            <field name="name">New Student Management</field>
+           <field name="res_model">registration.detail</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+
+
+    </data>
+</odoo>
+

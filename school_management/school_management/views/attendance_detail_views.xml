@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+<!-- school management main menu -->
+        <menuitem id="school_management_menu_root"
+            name="School Management"/>
+
+<!-- attendance managemnet sub menu -->
+        <menuitem id="attendance_detail_menu"
+          name="Attendance"
+          parent="school_management_menu_root"
+          action="action_attendance_detail" />
+
+
+
+<!-- form tag start from here-->
+
+         <record id="attendance_detail_view_form" model="ir.ui.view">
+            <field name="name">attendance.view.form</field>
+            <field name="model">attendance.detail</field>
+            <field name="arch" type="xml">
+                <form string="Employee">
+                    <sheet>
+                        <!-- sequence generating field -->
+                         <h2>
+                             <field name="attendance_seq"/>
+                         </h2>
+
+                        <group string="Attendance Management">
+                            <group>
+                                <field name="name"/>
+
+                                <field name="roll_no"/>
+                                <field name="student"/>
+
+
+                                <field name="gender"/>
+                                <field name="class_id"/>
+
+                            </group>
+
+
+                            <group>
+                                <field name="note"/>
+                                <field name="status"/>
+
+
+                                <field name="date_field" widget="remaining_days"/>
+
+                                <field name="mobile_number" widget="phone"/>
+
+                                <field name="e_mail" widget="email"/>
+                            </group>
+
+
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+<!-- tree tag start from here-->
+
+      <record id="attendance_detail_view_tree" model="ir.ui.view">
+         <field name="name">attendance.view.tree</field>
+         <field name="model">attendance.detail</field>
+         <field name="arch" type="xml">
+             <tree>
+                 <field name="name" required="1"/>
+                 <field name="roll_no"/>
+                 <field name="student"/>
+
+
+                <field name="gender"/>
+                <field name="class_id"/>
+             </tree>
+         </field>
+      </record>
+
+
+
+      <!-- action field -->
+
+      <record model="ir.actions.act_window" id="action_attendance_detail">
+            <field name="name">Attendance Management</field>
+           <field name="res_model">attendance.detail</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+
+
+
+    </data>
+</odoo>
+
+
