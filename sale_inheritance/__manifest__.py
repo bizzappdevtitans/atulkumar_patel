@@ -6,7 +6,7 @@
     "category": "Sales/Sales",
     "version": "0.1",
     # any module necessary for this one to work correctly
-    "depends": ["sale","sale_management","stock","mrp","product","account","resource","sale_project"],
+    "depends": ["sale","sale_management","stock","mrp","product","purchase","account","resource","sale_project"],
     # always loaded
     "data": [
         "data/ir_sequence_data.xml",
@@ -20,6 +20,7 @@
         "views/project_task_views.xml",
         "views/introduction_text_views.xml",
         "views/closing_text_views.xml",
+        "views/product_product_views.xml",
     ],
     "license": "LGPL-3",
     "installable": True,

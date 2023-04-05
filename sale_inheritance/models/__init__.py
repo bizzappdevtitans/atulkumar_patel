@@ -10,5 +10,10 @@ from . import project_project
 from . import project_task
 from . import introduction_text
 from . import closing_text
+from . import product_product
+from . import purchase_order
+from . import purchase_order_line
+
+
 
 

@@ -30,6 +30,8 @@ class SaleOrder(models.Model):
     introduction_id = fields.Many2one("introduction.text")
     closing_id = fields.Many2one("closing.text")
 
+    
+
     def _prepare_invoice(self):
         '''this method will generate a regular invoice #T00316'''
         res = super(SaleOrder, self)._prepare_invoice()
