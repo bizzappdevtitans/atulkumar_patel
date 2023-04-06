@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+   <!-- main menu of libary management module -->
+        <menuitem id="library_management_menu_root"
+        name="Library Management"
+        action="action_library_management"/>
+
+
+<!-- form tag start from here-->
+
+        <record id="library_management_view_form" model="ir.ui.view">
+            <field name="name">library.management.view.form</field>
+            <field name="model">library.management</field>
+            <field name="arch" type="xml">
+                <form string="Library Management">
+                    <sheet>
+                        <!-- sequence generator -->
+                        <h2>
+                            <field name="library_seq"/>
+                        </h2>
+
+                        <group string="Library Book Borrow">
+                            <group>
+                                <field name="name" string="Name"/>
+                                <field name="address" string="Address"/>
+                                <field name="contact" string="Contact" widget="phone"/>
+                                <field name="email" string="Email" widget="email"/>
+                            </group>
+
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+
+<!-- tree tag start from here-->
+
+    <record id="library_management_view_tree" model="ir.ui.view">
+        <field name="name">library.management.view.tree</field>
+        <field name="model">library.management</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Name"/>
+                <field name="address" string="Address"/>
+                <field name="contact" string="Contact" widget="phone"/>
+                <field name="email" string="Email" widget="email"/>
+
+            </tree>
+        </field>
+    </record>
+
+     <!-- action field -->
+
+        <record model="ir.actions.act_window" id="action_library_management">
+            <field name="name">Library management</field>
+            <field name="res_model">library.management</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>
+
+
+
+
+
+
+

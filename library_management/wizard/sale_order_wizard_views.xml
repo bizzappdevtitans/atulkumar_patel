@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+<!-- library management main menu #T00316 -->
+        <menuitem id="library_management_menu_root"
+            name="Library Management"/>
+
+<!-- library management sale order wizard menu #T00316 -->
+        <menuitem id="sale_order_wizard_menu"
+          name="SaleOrderWizard"
+          parent="library_management_menu_root"
+          action="action_sale_order_form_wizard"/>
+
+<!-- form tag start from here #T00316-->
+
+        <record id="sale_order_wizard_view_form" model="ir.ui.view">
+            <field name="name">sale.order.view.form</field>
+            <field name="model">sale.order.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Wizard">
+                    <sheet>
+                        <group string="wizard Management">
+                            <group>
+                                <field name="partner_id"/> 
+                                <field name="product_id"/> 
+                            </group>
+                            <group>    
+                                <field name="qty"/>  
+                                <field name="date_order"/>                         
+                            </group>                             
+                        </group>
+<!-- notebook tag start from here #T00316 -->
+                        <notebook>                       
+                                <page string="Order Line"> 
+                                    <form>  
+                                     <!-- added sale line id one to many field #T00316 -->
+                                        <field name="sale_line_ids"/>
+                                    </form> 
+                                </page>
+                        </notebook> 
+ <!-- notebook tag end here #T00316 -->                
+                    </sheet> 
+                     <!-- sheet tag end here #T00316 -->
+                    <footer>
+                        <!-- footer tag start from here #T00316 -->
+                        <button class="oe_highlight" type="object" name="create_sale_order" id="create_sale_order_open" context="{'open_sale_order': True}" string="create and view sale order" icon="fa-icon"/>
+                        <button  class="btn-secondary" type="object" name="create_sale_orders" string="create sale order" icon="fa-icon"/>                      
+                        <button string="Cancel" name="action_cancel" type="object" class="btn-primary" data-hotkey="q"/>
+                        <button string="Cancel" class="btn btn-default" special="cancel" data-hotkey="z"/>
+                    </footer> 
+ <!-- footer tag end here #T00316  -->
+                </form>              
+            </field>
+        </record>
+
+<!-- action field start from here #T00316-->
+
+      <record id="action_sale_order_form_wizard" model="ir.actions.act_window">
+            <field name="name">Create Sale Order</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.wizard</field>
+            <!-- <field name="view_type">form</field> -->
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="sale_order_wizard_view_form"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>
+
+
+

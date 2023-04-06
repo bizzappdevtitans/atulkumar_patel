@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+<!-- main menu of libary management module -->
+        <menuitem id="library_management_menu_root"
+            name="Library Management"/>
+
+<!--created borrow books  sub menu of library management  -->
+        <menuitem id="borrow_books_menu"
+          name="Borrow Books"
+          groups="group_library_management_borrow"
+          parent="library_management_menu_root"
+          action="action_borrow_books"/>
+
+<!-- form tag start from here-->
+
+        <record id="borrow_books_view_form" model="ir.ui.view">
+            <field name="name">borrow.books.view.form</field>
+            <field name="model">borrow.books</field>
+            <field name="arch" type="xml">
+                <form string="Library Book Borrow">
+                    <sheet>
+                        <!-- sequence generator -->
+                        <h2>
+                            <field name="borrow_seq"/>
+                        </h2>
+
+                        <group string="Library Book Borrow">
+                            <group>
+                                <field name="reader_id" string="Reader Id"/>
+                                <field name="book_id" string="Book Id"/>
+                                <field name="borrow_date" string="Borrow Date"/>
+                                <field name="return_date" string="Return Date"/>
+                                <field name="duration"/>
+                            </group>
+
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+<!-- tree tag start from here-->
+
+        <record id="borrow_books_view_tree" model="ir.ui.view">
+            <field name="name">borrow.books.view.tree</field>
+            <field name="model">borrow.books</field>
+            <field name="arch" type="xml">
+                <tree>
+
+                    <field name="reader_id" string="Reader Id"/>
+                    <field name="book_id" string="Book Id"/>
+                    <field name="borrow_date" string="Borrow Date"/>
+                    <field name="return_date" string="Return Date"/>
+
+                </tree>
+           </field>
+        </record>
+
+
+    <!-- action field -->
+
+        <record model="ir.actions.act_window" id="action_borrow_books">
+            <field name="name">Library Books Borrowing</field>
+            <field name="res_model">borrow.books</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
+
+
+
+
+
+

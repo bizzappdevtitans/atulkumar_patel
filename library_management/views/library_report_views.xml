@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+   <!-- main menu of libary management module -->
+        <menuitem id="library_management_menu_root"
+            name="Library Management"/>
+
+ <!--created  library report sub menu of library management  -->
+        <menuitem id="library_report_menu"
+          name="Library Report"
+          groups="group_library_management_report"
+          parent="library_management_menu_root"
+          action="action_library_report"/>
+
+
+<!-- form tag start from here-->
+
+        <record id="library_report_view_form" model="ir.ui.view">
+            <field name="name">library.report.view.form</field>
+            <field name="model">library.report</field>
+            <field name="arch" type="xml">
+                <form string="Library Report">
+                    <sheet>
+                        <!-- sequence generator -->
+                        <h2>
+                            <field name="report_seq"/>
+                        </h2>
+                        <group string="Library Report Management">
+                            <group>
+                                <field name="name" string="Name"/>
+                                <field name="description" string="Description"/>
+                                <field name="report_type" string="Report Type"/>
+                                <field name="data" string="Data" readonly="1"/>
+
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!-- tree tag start from here-->
+
+        <record id="library_report_view_tree" model="ir.ui.view">
+            <field name="name">library.report.view.tree</field>
+            <field name="model">library.report</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="Name"/>
+                    <field name="description" string="Description"/>
+                    <field name="report_type" string="Report Type"/>
+                    <field name="data" string="Data" readonly="1"/>
+                </tree>
+             </field>
+        </record>
+
+
+<!-- graph view starts from here -->
+
+        <record id="view_graph_report" model="ir.ui.view">
+                <field name="model">library.report</field>
+                <field name="arch" type="xml">
+                    <graph type="bar">
+                        <field name="name" string="Name"/>
+                        <field name="report_type" string="Report Type"/>
+                        <field name="data" string="Data" readonly="1"/>
+                    </graph>
+                </field>
+        </record>
+    <!-- action field -->
+
+        <record model="ir.actions.act_window" id="action_library_report">
+            <field name="name">Library Report Management</field>
+            <field name="res_model">library.report</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+    </data>
+</odoo>
+
+
+
+
+
