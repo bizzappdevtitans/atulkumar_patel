@@ -3,7 +3,12 @@
     "author": "atul",
     "description": "library management project",
     "sequence": 0,
-    "depends": ["base", "mail","sale","sale_management",],
+    "depends": [
+        "base",
+        "mail",
+        "sale",
+        "sale_management",
+    ],
     "data": [
         "data/ir_sequence_data.xml",
         "security/ir.model.access.csv",
@@ -13,7 +18,7 @@
         "views/borrow_books_views.xml",
         "views/books_detail_views.xml",
         "views/library_management_views.xml",
-        "wizard/sale_order_wizard_views.xml"
+        "wizard/sale_order_wizard_views.xml",
     ],
     "license": "LGPL-3",
     "installable": True,

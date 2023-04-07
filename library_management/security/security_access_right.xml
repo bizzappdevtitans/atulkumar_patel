@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
 
-<!-- created Library management security groups  -->
+<!-- Created Library management security groups  #T00316-->
      <record model="ir.module.category" id="module_category_library_management">
              <field name="name">Library Management</field>
              <field name="sequence">5</field>
      </record>
 
-<!-- created security groups for  books detail section -->
+<!-- Created security groups for  books detail section #T00316-->
      <record id="group_library_management_books" model="res.groups">
         <field name="name">Books</field>
         <field name="category_id" ref="module_category_library_management"/>
 
     </record>
 
-<!-- created security groups for  borrowed books  section -->
+<!-- Created security groups for  borrowed books  section #T00316-->
      <record id="group_library_management_borrow" model="res.groups">
         <field name="name">Borrow</field>
         <field name="category_id" ref="module_category_library_management"/>
 
     </record>
 
-<!-- created security groups for  reader detail section -->
+<!-- Created security groups for  reader detail section #T00316-->
           <record id="group_library_management_readers" model="res.groups">
             <field name="name">Readers</field>
             <field name="category_id" ref="module_category_library_management"/>
            </record>
 
-<!-- created security groups for  library report section -->
+<!-- Created security groups for  library report section #T00316-->
         <record id="group_library_management_report" model="res.groups">
             <field name="name">Report</field>
             <field name="category_id" ref="module_category_library_management"/>
