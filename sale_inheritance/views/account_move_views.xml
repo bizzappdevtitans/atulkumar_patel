@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
   <data>
-    <!-- account move views form -->
+    <!-- account move views form #T00316-->
         <record id="account_move_form" model="ir.ui.view">
             <field name="name">account.move.form</field>
             <field name="model">account.move</field>
@@ -9,7 +9,7 @@
             <field name="inherit_id" ref="account.view_move_form"/>
             <field name="arch" type="xml">
                 <xpath expr="/form//field[@name='invoice_date']" position="after">
-                      <!-- this xpath add field in account move form view -->
+                      <!-- this xpath add field in account move form view #T00316-->
                     <field name="invoice_text"/>
                 </xpath>
             </field>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
   <data>
-          <!-- Top menu item -->
+          <!-- Top menu item #T00316-->
         <menuitem id="sale_menu_root"
             name="Sales Inheritance"/>
 
@@ -10,13 +10,14 @@
           parent = "sale_menu_root"
           action="action_introduction_detail"/>
 
-    <!-- introduction text views form -->
+    <!-- introduction text views form #T00316-->
         <record id="introduction_views_form" model="ir.ui.view">
             <field name="name">introduction.text.view.form</field>
             <field name="model">introduction.text</field>
             <field name="arch" type="xml">
               <form string="Intruduction">
                 <sheet>
+                    <!-- sequence generator #T00316 -->
                         <h2>
                            <field name="intro_seq"/>
                         </h2>
@@ -37,7 +38,7 @@
             </field>
         </record>
 
-        <!-- introduction text views tree -->
+        <!-- introduction text views tree #T00316-->
         <record id="introduction_views_tree" model="ir.ui.view">
             <field name="name">introduction.text.view.tree</field>
             <field name="model">introduction.text</field>
@@ -55,7 +56,7 @@
 
 
 
-      <!-- search views -->
+      <!-- search views #T00316-->
        <record id="introduction_view_search" model="ir.ui.view">
         <field name="name">introduction.text.view.search</field>
         <field name="model">introduction.text</field>
@@ -65,19 +66,19 @@
                 <field name="gender"/>
                 <field name="age"/>
 
-                <!-- filter tage to filter record based on gender -->
+                <!-- filter tage to filter record based on gender #T00316-->
                 <filter name='male' string='Male' domain="[('gender','=','male')]"/>
                 <separator/>
 
                 <filter name='female' string='Female' domain="[('gender','=','female')]"/>
 
 
-                <!-- group by tag to filter record using groupby gender -->
+                <!-- group by tag to filter record using groupby gender #T00316-->
                 <group expand="0" string="Group By">
                     <filter string="Gender" name="group_by_gender" context="{'group_by' : 'gender'}"/>
 
                 </group>
-                        <!-- searchpanel tag -->
+                        <!-- searchpanel tag #T00316-->
                         <searchpanel>
                             <field name = "gender" icon = "fa-user-o" />
                         </searchpanel>
@@ -86,7 +87,7 @@
         </record>
 
 
-                <!-- action field -->
+                <!-- action field #T00316-->
 
       <record model="ir.actions.act_window" id="action_introduction_detail">
             <field name="name">Introduction</field>

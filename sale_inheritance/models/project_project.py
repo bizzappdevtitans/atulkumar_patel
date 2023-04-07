@@ -1,8 +1,10 @@
-from odoo import models, fields, api
+from odoo import models, fields
+
 
 class ProjectProject(models.Model):
-	''' inherit project.project model #T00316'''
-	_inherit = "project.project"
-	_description = "sale inheritance project_project"
+    """inherit project.project model #T00316"""
 
-	project_description = fields.Text(string="Project Description")
+    _inherit = "project.project"
+    _description = "sale inheritance project_project"
+
+    project_description = fields.Text(string="Project Description")

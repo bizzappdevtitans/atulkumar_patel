@@ -1,7 +1,8 @@
-from odoo import models, fields, api
+from odoo import models, fields
+
 
 class AccountMove(models.Model):
-    '''Inherit account move model #T00316'''	
+    """Inherit account move model #T00316"""
 
     _inherit = "account.move"
     _description = "sale inheritance account move"

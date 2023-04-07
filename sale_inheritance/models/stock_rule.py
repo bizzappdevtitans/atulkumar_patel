@@ -1,17 +1,36 @@
-from odoo import models, fields, api
+from odoo import models
+
 
 class StockRule(models.Model):
-	'''Inherit stock rule class which is persent inside mrp '''
-	_inherit = 'stock.rule'
-	_description = "sale inheritance stock rule"
+    """Inherit stock rule class which is persent inside mrp"""
 
-	def _prepare_mo_vals(self, product_id, product_qty, product_uom, location_id, name, origin, company_id, values, bom):
-		'''this method will pass value from sale order to manufacturing order #T00316'''
+    _inherit = "stock.rule"
+    _description = "sale inheritance stock rule"
 
-		vals = super(StockRule, self)._prepare_mo_vals(product_id, product_qty, product_uom, location_id, name, origin, company_id, values, bom)
-		vals["mrp_description"] = values.get('mrp_text')                                                                     
-		print("\n\n print vals",vals,"\n\n")
-		return vals
+    def _prepare_mo_vals(
+        self,
+        product_id,
+        product_qty,
+        product_uom,
+        location_id,
+        name,
+        origin,
+        company_id,
+        values,
+        bom,
+    ):
+        """this method will pass value from sale order to manufacturing order #T00316"""
 
-
- 
+        vals = super(StockRule, self)._prepare_mo_vals(
+            product_id,
+            product_qty,
+            product_uom,
+            location_id,
+            name,
+            origin,
+            company_id,
+            values,
+            bom,
+        )
+        vals["mrp_description"] = values.get("mrp_text")
+        return vals

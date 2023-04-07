@@ -5,9 +5,19 @@
     "author": "Atul",
     "category": "Sales/Sales",
     "version": "0.1",
-    # any module necessary for this one to work correctly
-    "depends": ["sale","sale_management","stock","mrp","product","purchase","account","resource","sale_project"],
-    # always loaded
+    # T00316 any module necessary for this one to work correctly
+    "depends": [
+        "sale",
+        "sale_management",
+        "stock",
+        "mrp",
+        "product",
+        "purchase",
+        "account",
+        "resource",
+        "sale_project",
+    ],
+    # T00316 always loaded
     "data": [
         "data/ir_sequence_data.xml",
         "security/ir.model.access.csv",

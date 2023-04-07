@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
   <data>
-    <!-- project_project views form -->
+    <!-- project_project views form #T00316-->
         <record id="project_project_views_form" model="ir.ui.view">
             <field name="name">project.project.form</field>
             <field name="model">project.project</field>
@@ -9,7 +9,7 @@
             <field name="inherit_id" ref="project.edit_project"/>
             <field name="arch" type="xml">
                 <xpath expr="/form//field[@name='company_id']" position="after">
-                      <!-- this xpath add field in project form view -->
+                      <!-- this xpath add field in project form view #T00316-->
                     <field name="project_description"/>
                 </xpath>
             </field>

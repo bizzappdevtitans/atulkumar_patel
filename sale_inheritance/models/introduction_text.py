@@ -1,13 +1,14 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
+
 class IntroductionText(models.Model):
-    '''created introdution model #T00316'''	
+    """created introdution model #T00316"""
 
     _name = "introduction.text"
     _description = "introduction text class"
 
-    name = fields.Char(string="Name",required="1")
+    name = fields.Char(string="Name", required="1")
     intro_seq = fields.Char(readonly=True)
     gender = fields.Selection(
         [
@@ -26,7 +27,6 @@ class IntroductionText(models.Model):
         """created constrains for mobile no to get valid mobile no #T00316"""
         for record in self:
             if len(record.contact) > 15 or len(record.contact) < 10:
-
                 raise ValidationError("Invalid contact no %s" % record.contact)
 
     @api.model
