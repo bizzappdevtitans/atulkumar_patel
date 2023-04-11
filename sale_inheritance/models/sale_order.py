@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class SaleOrder(models.Model):
@@ -33,3 +33,26 @@ class SaleOrder(models.Model):
         res = super(SaleOrder, self)._prepare_invoice()
         res["invoice_text"] = self.invoice_description
         return res
+
+    @api.returns("self", lambda value: value.id)
+    def copy(self, default=None):
+        """Override copy method to pass attachment from one page to
+        another in sale order #T00316"""
+
+        attachment_list = []
+        new_record = super(SaleOrder, self).copy(default=default)
+        for attachment in self.env["ir.attachment"].search(
+            [("res_model", "=", "sale.order"), ("res_id", "=", self.id)]
+        ):
+            attachment_data = {
+                "name": attachment.name,
+                "res_name": self.name,
+                "datas": attachment.datas,
+                "res_model": "sale.order",
+                "res_id": new_record.id,
+            }
+            attachment_list.append(attachment_data)
+
+        for attachment_data in attachment_list:
+            self.env["ir.attachment"].create(attachment_data)
+        return new_record

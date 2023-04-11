@@ -16,6 +16,8 @@
         "account",
         "resource",
         "sale_project",
+        "attachment_indexation",
+        "web",
     ],
     # T00316 always loaded
     "data": [

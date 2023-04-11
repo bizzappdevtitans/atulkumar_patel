@@ -21,3 +21,4 @@ class SaleOrderLine(models.Model):
         vals = super(SaleOrderLine, self)._timesheet_create_task_prepare_values(project)
         vals["task_description"] = self.order_id.task_text
         return vals
+
