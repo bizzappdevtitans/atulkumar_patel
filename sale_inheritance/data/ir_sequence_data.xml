@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+
+
+         <record id="introduction_text_seq" model="ir.sequence">
+             <field name="name">Introduction Text</field>
+             <field name="code">introduction.text</field>
+             <field name="prefix">I</field>
+             <field eval ="4" name="padding"/>
+
+      </record>
+
+
+       <record id="closing_text_seq" model="ir.sequence">
+             <field name="name">Closing Text</field>
+             <field name="code">closing.text</field>
+             <field name="prefix">C</field>
+             <field eval ="4" name="padding"/>
+
+      </record>
+
+
+
+    </data>
+</odoo>

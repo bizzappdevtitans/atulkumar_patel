@@ -1,0 +1,58 @@
+from odoo import models, fields, api
+
+
+class SaleOrder(models.Model):
+    """inherit sale order model #T00316"""
+
+    _inherit = "sale.order"
+    _description = "sale inheritance"
+
+    # T00316 this field is for account move invoice
+    invoice_description = fields.Text(string="Invoice Description")
+
+    # T00316 this field is for stock picking
+    delivery_description = fields.Text(string="Delivery Description")
+
+    # T00316 this field is for sale order line one2many field
+    sale_data = fields.Float(string="Sale Data")
+
+    # T00316 this field is for mrp production
+    mrp_text = fields.Char(string="Manufacturing Text")
+
+    # T00316 this field is for project_project model
+    project_text = fields.Text(string="Project Text")
+
+    # T00316 this field is for project task model
+    task_text = fields.Text(string="Task Text")
+
+    introduction_id = fields.Many2one("introduction.text")
+    closing_id = fields.Many2one("closing.text")
+
+    def _prepare_invoice(self):
+        """this method will generate a regular invoice #T00316"""
+        res = super(SaleOrder, self)._prepare_invoice()
+        res["invoice_text"] = self.invoice_description
+        return res
+
+    @api.returns("self", lambda value: value.id)
+    def copy(self, default=None):
+        """Override copy method to pass attachment from one page to
+        another in sale order #T00316"""
+
+        attachment_list = []
+        new_record = super(SaleOrder, self).copy(default=default)
+        for attachment in self.env["ir.attachment"].search(
+            [("res_model", "=", "sale.order"), ("res_id", "=", self.id)]
+        ):
+            attachment_data = {
+                "name": attachment.name,
+                "res_name": self.name,
+                "datas": attachment.datas,
+                "res_model": "sale.order",
+                "res_id": new_record.id,
+            }
+            attachment_list.append(attachment_data)
+
+        for attachment_data in attachment_list:
+            self.env["ir.attachment"].create(attachment_data)
+        return new_record

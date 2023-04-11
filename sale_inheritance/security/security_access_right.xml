@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+<!-- created Sales management security groups  -->
+     <record model="ir.module.category" id="module_category_sales_management">
+             <field name="name">Sales Management</field>
+             <field name="sequence">5</field>
+     </record>
+
+<!-- created security groups for  introduction text section -->
+     <record id="group_sales_management_introduction" model="res.groups">
+        <field name="name">Introduction</field>
+        <field name="category_id" ref="module_category_sales_management"/>
+
+    </record>
+
+<!-- created security groups for  closing text  section -->
+     <record id="group_sales_management_closing" model="res.groups">
+        <field name="name">Closing</field>
+        <field name="category_id" ref="module_category_sales_management"/>
+
+    </record>
+ 
+</odoo>

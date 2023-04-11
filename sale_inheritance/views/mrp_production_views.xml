@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <data>
+    <!-- mrp production views form #T00316-->
+        <record id="mrp_production_views_form" model="ir.ui.view">
+            <field name="name">mrp.production.form</field>
+            <field name="model">mrp.production</field>
+            <field name="priority">10</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form//field[@name='company_id']" position="after">
+                    <!-- this xpath add field in manufacturing order form view #T00316-->
+                    <field name="mrp_description"/>
+                </xpath>
+            </field>
+        </record>
+  </data>
+</odoo>

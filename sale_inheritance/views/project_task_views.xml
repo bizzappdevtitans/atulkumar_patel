@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <data>
+    <!-- project task views form #T00316-->
+        <record id="project_task_views_form" model="ir.ui.view">
+            <field name="name">project.task.form</field>
+            <field name="model">project.task</field>
+            <field name="priority">9</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form//field[@name='parent_id']" position="after">
+                      <!-- this xpath add field in task form view #T00316-->
+                    <field name="task_description"/>
+                </xpath>
+            </field>
+        </record>
+  </data>
+</odoo>

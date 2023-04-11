@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <data>
+    <!-- stock picking views form #T00316-->
+        <record id="stock_picking_views_form" model="ir.ui.view">
+            <field name="name">stock.picking.form</field>
+            <field name="model">stock.picking</field>
+            <field name="priority">9</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form//field[@name='partner_id']" position="after">
+                    <!-- this xpath add field in stock picking form view #T00316-->
+                    <field name="shipment_text"/>
+                </xpath>
+            </field>
+        </record>
+  </data>
+</odoo>
