@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+<!-- main menu of Cattle management module #T00316 -->
+        <menuitem id="cattle_management_menu_root"
+            name="Cattle Management"/>
+
+<!--created Buyer  sub menu of cattle management #T00316 -->
+         <menuitem id="buyer_menu"
+          name="Buyer"
+          parent="cattle_management_menu_root"
+         action="action_buyer"/>
+         <!--  -->
+
+<!-- form tag start from here #T00316-->
+
+        <record id="buyer_view_form" model="ir.ui.view">
+            <field name="name">buyer.view.form</field>
+            <field name="model">cattle.buyer</field>
+            <field name="arch" type="xml">
+                <form string="Buyer Menu">
+                    <sheet>
+                        <!-- sequence generator -->
+                        <h2>
+                            <field name="buyer_id"/>
+                        </h2>
+                            <group>
+                                <field name="name"/>
+                                <field name="contact" widget="phone"/>
+                                <field name="email"/>
+                                <field name="address"/>
+                            </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+<!-- tree tag start from here #T00316-->
+
+        <record id="buyer_view_tree" model="ir.ui.view">
+            <field name="name">buyer.view.tree</field>
+            <field name="model">cattle.buyer</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="contact" widget="phone"/>
+                    <field name="email"/>
+                    <field name="address"/>
+                </tree>
+           </field>
+        </record>
+
+
+    <!-- action field #T00316-->
+
+        <record model="ir.actions.act_window" id="action_buyer">
+            <field name="name">Buyer</field>
+            <field name="res_model">cattle.buyer</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
+

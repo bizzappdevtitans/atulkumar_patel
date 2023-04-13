@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+
+
+    <record id="administrator_seq" model="ir.sequence">
+             <field name="name">Cattle Administrator Detail</field>
+             <field name="code">cattle.administrator</field>
+             <field name="prefix">A</field>
+             <field eval ="4" name="padding"/>
+
+    </record>
+
+
+        <record id="buyer_detail_seq" model="ir.sequence">
+             <field name="name">Cattle Buyer Detail</field>
+             <field name="code">cattle.buyer</field>
+             <field name="prefix">B</field>
+             <field eval ="4" name="padding"/>
+
+        </record>
+
+        <record id="seller_detail_seq" model="ir.sequence">
+             <field name="name">Cattle Seller Detail</field>
+             <field name="code">cattle.seller</field>
+             <field name="prefix">S</field>
+             <field eval ="4" name="padding"/>
+
+        </record>
+
+        <record id="cattle_detail_seq" model="ir.sequence">
+             <field name="name">Cattle Detail</field>
+             <field name="code">cattle.detail</field>
+             <field name="prefix">C</field>
+             <field eval ="4" name="padding"/>
+
+        </record>
+
+         <record id="registration_detail_seq" model="ir.sequence">
+             <field name="name">Registration Detail</field>
+             <field name="code">registration.detail</field>
+             <field name="prefix">R</field>
+             <field eval ="4" name="padding"/>
+
+        </record>
+
+        <record id="payment_detail_seq" model="ir.sequence">
+             <field name="name">Payment Detail</field>
+             <field name="code">cattle.payment</field>
+             <field name="prefix">P</field>
+             <field eval ="4" name="padding"/>
+
+        </record>
+
+    </data>
+</odoo>
+

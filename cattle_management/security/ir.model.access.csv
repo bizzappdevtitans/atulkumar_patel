@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+cattle_management.access_cattle_administrator,access_cattle_administrator,cattle_management.model_cattle_administrator,base.group_user,1,1,1,1
+cattle_management.access_cattle_buyer,access_cattle_buyer,cattle_management.model_cattle_buyer,base.group_user,1,1,1,1
+cattle_management.access_cattle_detail,access_cattle_detail,cattle_management.model_cattle_detail,base.group_user,1,1,1,1
+cattle_management.access_cattle_news,access_cattle_news,cattle_management.model_cattle_news,base.group_user,1,1,1,1
+cattle_management.access_cattle_payment,access_cattle_payment,cattle_management.model_cattle_payment,base.group_user,1,1,1,1
+cattle_management.access_registration_detail,access_registration_detail,cattle_management.model_registration_detail,base.group_user,1,1,1,1
+cattle_management.access_cattle_seller,access_cattle_seller,cattle_management.model_cattle_seller,base.group_user,1,1,1,1
+
+

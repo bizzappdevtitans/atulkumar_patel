@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+<!-- main menu of Cattle management module #T00316 -->
+        <menuitem id="cattle_management_menu_root"
+            name="Cattle Management"/>
+
+<!--created cattle sub menu of cattle management #T00316 -->
+        <menuitem id="cattle_menu"
+          name="Cattle"
+          parent="cattle_management_menu_root"
+          action="action_cattle"/>
+
+          <!--  -->
+
+<!-- form tag start from here #T00316-->
+
+        <record id="cattle_view_form" model="ir.ui.view">
+            <field name="name">cattle.view.form</field>
+            <field name="model">cattle.detail</field>
+            <field name="arch" type="xml">
+                <form string="cattle Menu">
+                    <sheet>
+                         <!-- priority button -->
+                        <div class='oe_title'>
+                            <h1>
+                                <field name='priority' widget="priority" class='mr-3'/>
+
+                             </h1>
+                         </div>
+                        <!-- sequence generator -->
+                        <h2>
+                            <field name="cattle_id"/>
+                        </h2>
+                            <group>
+
+                                <field name="cattle_name"/>
+                                <field name="cattle_gender"/>
+                                <field name="cattle_age"/>
+                                <field name="cattle_breed"/>
+                                <field name="cattle_weight"/>
+                                <field name="cattle_price"/>
+                                <field name="cattle_colour"/>
+                                <field name="cattle_image"/>
+                                <field name="seller_id"/>
+
+                            </group>
+
+
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+<!-- tree tag start from here #T00316-->
+
+        <record id="cattle_view_tree" model="ir.ui.view">
+            <field name="name">cattle.view.tree</field>
+            <field name="model">cattle.detail</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="cattle_name"/>
+                    <field name="cattle_gender"/>
+                    <field name="cattle_age"/>
+                    <field name="cattle_breed"/>
+                    <field name="cattle_weight"/>
+                    <field name="cattle_price"/>
+                    <field name="cattle_colour"/>
+                    <field name="seller_id"/>
+
+                </tree>
+           </field>
+        </record>
+
+
+    <!-- action field #T00316-->
+
+        <record model="ir.actions.act_window" id="action_cattle">
+            <field name="name">Cattle</field>
+            <field name="res_model">cattle.detail</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
+
+
+
