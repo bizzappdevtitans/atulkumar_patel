@@ -6,7 +6,7 @@
     "category": "Buy/Sale",
     "version": "15.0",
     # T00316 any module necessary for this one to work correctly
-    "depends": ["base", "sale_management", "purchase"],
+    "depends": ["base", "sale", "product", "purchase", "sale_purchase"],
     # T00316 always loaded
     "data": [
         "security/ir.model.access.csv",
@@ -17,6 +17,7 @@
         "views/cattle_seller_views.xml",
         "views/registration_detail_views.xml",
         "views/cattle_payment_views.xml",
+        "views/sale_order_views.xml",
     ],
     "license": "LGPL-3",
     "installable": True,

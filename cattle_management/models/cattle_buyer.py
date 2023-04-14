@@ -13,12 +13,7 @@ class CattleBuyer(models.Model):
     contact = fields.Char(string="Buyer Contact", required=True)
     email = fields.Char(string="Buyer Email", required=True)
     address = fields.Text(string="Buyer Address")
-    purchase_order_ids = fields.One2many(
-        "purchase.order",
-        "buyer_id",
-        string="Purchase Orders",
-        domain=[("state", "in", ["purchase", "done"])],
-    )
+
     payment_ids = fields.One2many("cattle.payment", "buyer_id")
 
     # created this model to generate sequence no

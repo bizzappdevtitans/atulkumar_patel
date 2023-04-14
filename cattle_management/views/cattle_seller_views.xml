@@ -10,6 +10,11 @@
           name="Seller"
           parent="cattle_management_menu_root"
          action="action_seller"/>
+         <menuitem id="sale_order_cattle"
+          name="Sale"
+          parent="cattle_management_menu_root"
+        action="sale.action_quotations_with_onboarding"/>
+
 
          <!--  -->
 
@@ -20,7 +25,20 @@
             <field name="model">cattle.seller</field>
             <field name="arch" type="xml">
                 <form string="Seller Menu">
+                      <header>
+                         <!-- Footer tag start from here #T00316 -->
+                         <button class="oe_highlight" type="object" name="create_sale_order" id="create_sale_order_open" context="{'open_sale_order': True}" string="create sale order" icon="fa-icon"/>
+                         <button  class="btn-secondary" type="object" name="create_sale_order" string="create sale order" icon="fa-icon"/>
+                         <button string="Cancel" class="btn btn-default" special="cancel" data-hotkey="z"/>
+                    </header>
                     <sheet>
+                          <!-- smart button -->
+                            <div class="oe_button_box" name="button_box">
+                                <button class="oe_highlight" type="object" name="get_cattle" icon="fa-hand-o-right">
+                                    <!-- <span class="o_stat_text">Total Cattle</span> -->
+                                    <field name="total_cattle" widget="statinfo"/>
+                                </button>
+                            </div>
                         <!-- sequence generator -->
                         <h2>
                             <field name="seller_id"/>

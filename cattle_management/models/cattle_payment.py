@@ -7,18 +7,16 @@ class CattlePayment(models.Model):
 
     _name = "cattle.payment"
     _description = "Payment Detail"
+    _rec_name = "buyer_id"
 
     payment_id = fields.Char(string="Payment Id", readonly=True)
-    name = fields.Char(required=True)
-    amount = fields.Float(required=True)
     # register_id = fields.Integer(string="Register Id", required=True)
     date = fields.Date(string="Payment Date", default=datetime.today())
     # transaction_no = fields.Char(string="Transation No", required=True)
-    buyer_id = fields.Many2one("cattle.buyer")
+    buyer_id = fields.Many2one("cattle.buyer", required=True)
     seller_id = fields.Many2one("cattle.seller", string="Seller")
-    cattle_id = fields.Many2one("cattle.detail", string="Cattle")
-    sale_order_id = fields.Many2one("sale.order", string="Sale order")
-    purchase_order_id = fields.Many2one("purchase.order", string="Purchase Order")
+    cattle_ids = fields.Many2many("cattle.detail", string="Cattle")
+    amount = fields.Float(compute="_amount_total", string="SubTotal")
     status = fields.Selection(
         [
             ("draft", "Draft"),
@@ -29,7 +27,17 @@ class CattlePayment(models.Model):
         string="State",
     )
 
+    def _amount_total(self):
+        """
+        Compute the total amounts of the cattle.
+        """
+        total = 0.0
+        for count in self.cattle_ids:
+            total += count.cattle_price
+        self.amount = total
+
     # created this model to generate sequence no
+
     @api.model
     def create(self, vals):
         vals["payment_id"] = self.env["ir.sequence"].next_by_code("cattle.payment")

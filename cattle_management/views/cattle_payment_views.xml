@@ -7,7 +7,7 @@
 
 <!--created Buyer  sub menu of cattle management #T00316 -->
          <menuitem id="payment_menu"
-          name="Payment"
+          name="Buy and Pay"
           parent="cattle_management_menu_root"
           action="action_payment"/>
 
@@ -18,23 +18,30 @@
             <field name="model">cattle.payment</field>
             <field name="arch" type="xml">
                 <form string="Payment Menu">
+
+
                     <!-- statusbar field  #T00316-->
                     <header>
                         <field name="status" widget="statusbar" nolable="1" options="{'clickable':'1'}"/>
                     </header>
 
                     <sheet>
+
                         <!-- sequence generator #T00316-->
                         <h2>
                             <field name="payment_id"/>
                         </h2>
                             <group>
-                                <field name="name"/>
+                                <field name="buyer_id"/>
                                 <field name="amount"/>
                                 <field name="date"/>
-                                 <field name="sale_order_id"/>
-                                <field name="purchase_order_id"/>
+
                             </group>
+                        <notebook>
+                            <page string="Cattle Line">
+                                <field name="cattle_ids"/>
+                            </page>
+                        </notebook>
                     </sheet>
 
                 </form>
@@ -48,11 +55,9 @@
             <field name="model">cattle.payment</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="name"/>
-                    <field name="amount"/>
+                    <field name="buyer_id"/>
                     <field name="date"/>
-                    <field name="sale_order_id"/>
-                    <field name="purchase_order_id"/>
+                    <field name="cattle_ids"/>
                 </tree>
            </field>
         </record>

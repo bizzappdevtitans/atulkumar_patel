@@ -1,5 +1,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError
 
 
 class CattleSeller(models.Model):
@@ -14,38 +15,41 @@ class CattleSeller(models.Model):
     email = fields.Char(string="Seller Email", required=True)
     address = fields.Text(string="Seller Address")
     cattle_ids = fields.One2many("cattle.detail", "seller_id", string="Cattle")
-    sale_order_ids = fields.One2many(
-        "sale.order",
-        "seller_id",
-        string="Sale Orders",
-        domain=[("state", "=", "sale")],
-    )
-
-    def create_sale_order(self):
-        sale_order = self.env["sale.order"]
-        for seller in self:
-            for cattle in seller.cattle_ids:
-                sale_order.create(
-                    {
-                        "partner_id": seller.id,
-                        "partner_invoice_id": seller.id,
-                        "partner_shipping_id": seller.id,
-                        "order_line": [
-                            (
-                                0,
-                                0,
-                                {
-                                    "product_id": cattle.cattle_id.id,
-                                    "name": cattle.cattle_name,
-                                    "price_unit": cattle.cattle_price,
-                                    "product_uom_qty": 1,
-                                },
-                            )
-                        ],
-                    }
-                )
-
+    total_cattle = fields.Integer(compute="_count_cattle")
+    get_cattle = fields.Char(compute="get_cattle")
     # created this model to generate sequence no
+
+    @api.depends("cattle_ids")
+    def _count_cattle(self):
+        """Created count cattle compute method to get count of
+        total cattle related to this seller #T00316"""
+        for cattle in self:
+            cattle.total_cattle = len(cattle.cattle_ids)
+
+    def get_cattle(self):
+        """This method will show cattle detail if there is one cattle then
+        it will show form view and if more than one cattle then it
+        will show tree view #T00316"""
+        if self.total_cattle == 1:
+            cattle_form = self.env.ref("cattle_management.cattle_view_form")
+
+            return {
+                "name": "cattle",
+                "res_model": "cattle.detail",
+                "type": "ir.actions.act_window",
+                "view_mode": "form",
+                "views": [(cattle_form.id, "form")],
+                "domain": [("seller_id", "=", self.id)],
+            }
+
+        return {
+            "name": "cattle",
+            "res_model": "cattle.detail",
+            "type": "ir.actions.act_window",
+            "view_mode": "tree,form",
+            "domain": [("seller_id", "=", self.id)],
+        }
+
     @api.model
     def create(self, vals):
         vals["seller_id"] = self.env["ir.sequence"].next_by_code("cattle.seller")
@@ -57,3 +61,30 @@ class CattleSeller(models.Model):
         for record in self:
             if len(record.contact) > 15 or len(record.contact) < 10:
                 raise ValidationError("Invalid mobile_number %s" % record.contact)
+
+    def create_and_view_sale_order(self):
+        """T00316 This method is for creating and viewing sale order"""
+        sale_order = self.env["sale.order"]
+        if sale_order:
+            return {
+                "name": "Sale Order Created",
+                "view_type": "form",
+                "view_mode": "form",
+                "res_model": "sale.order",
+                "type": "ir.actions.act_window",
+                "res_id": sale_order.id,
+            }
+        else:
+            raise UserError("Failed to create sale order")
+
+    def create_sale_order(self):
+        """T00316 This method will create sale order"""
+        self.env["sale.order"].create(
+            {
+                "seller_name": self.name,
+                "address": self.address,
+                "order_line": self.cattle_ids,
+            }
+        )
+        if self._context.get("open_sale_order", False):
+            return self.create_and_view_sale_order()

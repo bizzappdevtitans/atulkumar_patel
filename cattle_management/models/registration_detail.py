@@ -32,3 +32,15 @@ class RegistrationDetail(models.Model):
         for record in self:
             if len(record.contact) > 15 or len(record.contact) < 10:
                 raise ValidationError("Invalid mobile_number %s" % record.contact)
+
+    # @api.model
+    # def write(self):
+    #     if self.is_seller:
+    #         self.env["cattle.seller"].write(
+    #             {
+    #                 "name": self.name,
+    #                 "contact": self.contact,
+    #                 "address": self.address,
+    #                 "email": self.email,
+    #             }
+    #         )

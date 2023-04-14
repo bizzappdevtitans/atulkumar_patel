@@ -33,20 +33,20 @@
                             <field name="cattle_id"/>
                         </h2>
                             <group>
-
-                                <field name="cattle_name"/>
-                                <field name="cattle_gender"/>
-                                <field name="cattle_age"/>
-                                <field name="cattle_breed"/>
-                                <field name="cattle_weight"/>
-                                <field name="cattle_price"/>
-                                <field name="cattle_colour"/>
-                                <field name="cattle_image"/>
-                                <field name="seller_id"/>
-
-                            </group>
-
-
+                                <group>
+                                    <field name="cattle_name"/>
+                                    <field name="cattle_gender"/>
+                                    <field name="cattle_age"/>
+                                    <field name="cattle_breed"/>
+                                    <field name="cattle_weight"/>
+                                    <field name="cattle_price"/>
+                                    <field name="cattle_colour"/>
+                                    <field name="seller_id"/>
+                                </group>
+                                <group>
+                                    <field name="cattle_image" widget="image" />
+                                </group>
+                        </group>
                     </sheet>
 
                 </form>
@@ -73,13 +73,88 @@
            </field>
         </record>
 
+<!-- kanban view start from here -->
+
+      <record id="cattle_kanban_view" model="ir.ui.view">
+            <field name="name">cattle.detail.view.kanban</field>
+            <field name="model">cattle.detail</field>
+            <field name="arch" type="xml">
+
+             <!-- kanban tag starts from here -->
+                <kanban class="o_res_partner_kanban">
+                    <field name="id"/>
+                    <field name="cattle_name"/>
+                    <field name="cattle_age"/>
+                    <field name="cattle_breed"/>
+                    <field name="cattle_weight"/>
+                    <field name="cattle_price"/>
+                    <field name="cattle_image"/>
+                    <field name="cattle_colour"/>
+
+
+                    <!-- template tag starts from here -->
+                        <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+
+                                <!-- div tag to add image in kanban view -->
+                                <div class="o_kanban_image">
+
+                                    <img t-att-src="kanban_image('cattle.detail','cattle_image',record.id.raw_value)"/>
+                                </div>
+
+                                <!-- kanban view fields -->
+                                <div class="oe_kanban_details">
+                                        <strong class="o_kanban_record_title">
+                                            <h2>
+                                                <field name="cattle_name"/>
+                                            </h2>
+                                        </strong>
+
+                                        <div t-if="record.cattle_breed.value">
+                                            <h6>  Breed: </h6>  <t t-esc="record.cattle_breed.value"/>
+                                        </div>
+
+                                        <div t-if="record.cattle_colour.value">
+                                            <h6> Colour: </h6>  <t t-esc="record.cattle_colour.value"/>
+                                        </div>
+
+                                        <div t-if="record.cattle_age.value">
+
+                                            <h6> Age: </h6> <t t-esc="record.cattle_age.value"/>
+                                        </div>
+
+                                        <div t-if="record.cattle_price.value">
+
+                                            <h6> Price: </h6> <t t-esc="record.cattle_price.value"/>
+                                        </div>
+                                        <div t-if="record.cattle_weight.value">
+
+                                            <h6> Weight: </h6> <t t-esc="record.cattle_weight.value"/>
+                                        </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                    <!-- template tag end here -->
+                </kanban>
+                <!-- kanban tag end here -->
+            </field>
+        </record>
+
+
 
     <!-- action field #T00316-->
 
         <record model="ir.actions.act_window" id="action_cattle">
             <field name="name">Cattle</field>
             <field name="res_model">cattle.detail</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a cattle in your cattle detail
+            </p>
+        </field>
         </record>
     </data>
 </odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <data>
+
+    <!-- sale order views form #T00316-->
+        <record id="sale_views_form" model="ir.ui.view">
+            <field name="name">sale.views</field>
+            <field name="model">sale.order</field>
+            <field name="priority">9</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <!-- this xpath add fields in sale order form view #T00316-->
+                <xpath expr="/form//field[@name='payment_term_id']" position="after">
+                    <field name="seller_name"/>
+                    <field name="address"/>
+                </xpath>
+
+            </field>
+        </record>
+  </data>
+</odoo>
+
