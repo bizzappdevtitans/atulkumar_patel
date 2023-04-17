@@ -9,9 +9,9 @@
          <menuitem id="registration_menu"
           name="Registration"
           parent="cattle_management_menu_root"
-          action="action_register"/>
+          />
 
-          <!--  -->
+          <!-- action="action_register" -->
 
 <!-- form tag start from here #T00316-->
 

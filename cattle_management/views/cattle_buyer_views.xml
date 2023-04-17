@@ -9,8 +9,8 @@
          <menuitem id="buyer_menu"
           name="Buyer"
           parent="cattle_management_menu_root"
-         action="action_buyer"/>
-         <!--  -->
+         />
+         <!-- action="action_buyer" -->
 
 <!-- form tag start from here #T00316-->
 

@@ -10,9 +10,19 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <!-- this xpath add fields in sale order form view #T00316-->
-                <xpath expr="/form//field[@name='payment_term_id']" position="after">
+              <!--   <xpath expr="/form//field[@name='payment_term_id']" position="after">
                     <field name="seller_name"/>
                     <field name="address"/>
+                </xpath> -->
+                 <!-- this xpath add field in one2many field in form view #T00316-->
+                <xpath expr="//notebook/page/field[@name='order_line']/tree/field[@name='product_uom_qty']" position="before">
+
+                    <field name="cattle_age"/>
+                    <field name="cattle_weight"/>
+
+                    <field name="cattle_breed"/>
+                    <field name="cattle_colour"/>
+                    <field name="cattle_gender"/>
                 </xpath>
 
             </field>

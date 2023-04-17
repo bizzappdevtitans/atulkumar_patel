@@ -6,10 +6,13 @@
             name="Cattle Management"/>
 
 <!--created cattle sub menu of cattle management #T00316 -->
+
         <menuitem id="cattle_menu"
           name="Cattle"
           parent="cattle_management_menu_root"
           action="action_cattle"/>
+
+
 
           <!--  -->
 
@@ -39,9 +42,10 @@
                                     <field name="cattle_age"/>
                                     <field name="cattle_breed"/>
                                     <field name="cattle_weight"/>
-                                    <field name="cattle_price"/>
+                                    <field name="price"/>
+                                    <field name="sold"/>
                                     <field name="cattle_colour"/>
-                                    <field name="seller_id"/>
+                                    <!-- <field name="seller_id"/> -->
                                 </group>
                                 <group>
                                     <field name="cattle_image" widget="image" />
@@ -65,9 +69,9 @@
                     <field name="cattle_age"/>
                     <field name="cattle_breed"/>
                     <field name="cattle_weight"/>
-                    <field name="cattle_price"/>
+                    <field name="price"/>
                     <field name="cattle_colour"/>
-                    <field name="seller_id"/>
+                    <!-- <field name="seller_id"/> -->
 
                 </tree>
            </field>
@@ -87,7 +91,7 @@
                     <field name="cattle_age"/>
                     <field name="cattle_breed"/>
                     <field name="cattle_weight"/>
-                    <field name="cattle_price"/>
+                    <field name="price"/>
                     <field name="cattle_image"/>
                     <field name="cattle_colour"/>
 
@@ -100,7 +104,7 @@
                                 <!-- div tag to add image in kanban view -->
                                 <div class="o_kanban_image">
 
-                                    <img t-att-src="kanban_image('cattle.detail','cattle_image',record.id.raw_value)"/>
+                                    <img alt="Avatar" t-att-src="kanban_image('cattle.detail','cattle_image',record.id.raw_value)"/>
                                 </div>
 
                                 <!-- kanban view fields -->
@@ -124,9 +128,9 @@
                                             <h6> Age: </h6> <t t-esc="record.cattle_age.value"/>
                                         </div>
 
-                                        <div t-if="record.cattle_price.value">
+                                        <div t-if="record.price.value">
 
-                                            <h6> Price: </h6> <t t-esc="record.cattle_price.value"/>
+                                            <h6> Price: </h6> <t t-esc="record.price.value"/>
                                         </div>
                                         <div t-if="record.cattle_weight.value">
 

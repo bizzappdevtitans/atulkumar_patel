@@ -9,8 +9,8 @@
          <menuitem id="payment_menu"
           name="Buy and Pay"
           parent="cattle_management_menu_root"
-          action="action_payment"/>
-
+         />
+ <!-- action="action_payment" -->
 <!-- form tag start from here #T00316-->
 
         <record id="payment_view_form" model="ir.ui.view">

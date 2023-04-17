@@ -12,10 +12,10 @@ class CattleDetail(models.Model):
     cattle_name = fields.Char(string="Cattle Name", required=True)
     cattle_age = fields.Integer(string="Cattle Age in Year")
     cattle_weight = fields.Float(string="Cattle Weight")
-    cattle_price = fields.Float(required=True)
+    price = fields.Float(required=True)
     cattle_breed = fields.Char(string="Cattle Breed", required=True)
     cattle_colour = fields.Char(string="Cattle Colour", required=True)
-
+    sold = fields.Boolean(string="Sold", default=False)
     cattle_image = fields.Binary()
     seller_id = fields.Many2one("cattle.seller", string="Seller")
 

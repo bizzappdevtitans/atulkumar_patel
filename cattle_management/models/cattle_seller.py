@@ -1,6 +1,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
-from odoo.exceptions import UserError
+# from odoo.exceptions import UserError
 
 
 class CattleSeller(models.Model):
@@ -62,29 +62,3 @@ class CattleSeller(models.Model):
             if len(record.contact) > 15 or len(record.contact) < 10:
                 raise ValidationError("Invalid mobile_number %s" % record.contact)
 
-    def create_and_view_sale_order(self):
-        """T00316 This method is for creating and viewing sale order"""
-        sale_order = self.env["sale.order"]
-        if sale_order:
-            return {
-                "name": "Sale Order Created",
-                "view_type": "form",
-                "view_mode": "form",
-                "res_model": "sale.order",
-                "type": "ir.actions.act_window",
-                "res_id": sale_order.id,
-            }
-        else:
-            raise UserError("Failed to create sale order")
-
-    def create_sale_order(self):
-        """T00316 This method will create sale order"""
-        self.env["sale.order"].create(
-            {
-                "seller_name": self.name,
-                "address": self.address,
-                "order_line": self.cattle_ids,
-            }
-        )
-        if self._context.get("open_sale_order", False):
-            return self.create_and_view_sale_order()

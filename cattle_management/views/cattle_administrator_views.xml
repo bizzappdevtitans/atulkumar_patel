@@ -9,8 +9,8 @@
         <menuitem id="administrator_menu"
           name="Administrator"
           parent="cattle_management_menu_root"
-          action="action_administrator"/>
-          <!--  -->
+          />
+          <!-- action="action_administrator" -->
 
 <!-- form tag start from here-->
 
