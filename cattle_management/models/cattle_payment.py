@@ -10,9 +10,7 @@ class CattlePayment(models.Model):
     _rec_name = "buyer_id"
 
     payment_id = fields.Char(string="Payment Id", readonly=True)
-    # register_id = fields.Integer(string="Register Id", required=True)
     date = fields.Date(string="Payment Date", default=datetime.today())
-    # transaction_no = fields.Char(string="Transation No", required=True)
     buyer_id = fields.Many2one("cattle.buyer", required=True)
     seller_id = fields.Many2one("cattle.seller", string="Seller")
     cattle_ids = fields.Many2many("cattle.detail", string="Cattle")

@@ -10,11 +10,8 @@
         <menuitem id="cattle_menu"
           name="Cattle"
           parent="cattle_management_menu_root"
-          action="action_cattle"/>
-
-
-
-          <!--  -->
+          action="action_cattle"
+          groups = "group_cattle_management_cattle_detail"/>
 
 <!-- form tag start from here #T00316-->
 
@@ -23,6 +20,16 @@
             <field name="model">cattle.detail</field>
             <field name="arch" type="xml">
                 <form string="cattle Menu">
+                    <header>
+                        <button class="oe_highlight" type="object" name="create_products" id="create_product" string="Create Product" icon="fa-icon"/>
+
+
+                          <!-- statusbar field -->
+
+                        <field name="state" widget="statusbar" nolable="1" options="{'clickable':'1'}"/>
+
+                    </header>
+
                     <sheet>
                          <!-- priority button -->
                         <div class='oe_title'>
@@ -33,19 +40,21 @@
                          </div>
                         <!-- sequence generator -->
                         <h2>
-                            <field name="cattle_id"/>
+                            <field name="cattle_seq"/>
                         </h2>
                             <group>
                                 <group>
                                     <field name="cattle_name"/>
                                     <field name="cattle_gender"/>
+                                    <field name="birth_date"/>
                                     <field name="cattle_age"/>
                                     <field name="cattle_breed"/>
                                     <field name="cattle_weight"/>
                                     <field name="price"/>
                                     <field name="sold"/>
                                     <field name="cattle_colour"/>
-                                    <!-- <field name="seller_id"/> -->
+                                    <field name="user_id"/>
+
                                 </group>
                                 <group>
                                     <field name="cattle_image" widget="image" />
@@ -71,7 +80,7 @@
                     <field name="cattle_weight"/>
                     <field name="price"/>
                     <field name="cattle_colour"/>
-                    <!-- <field name="seller_id"/> -->
+                    <field name="user_id"/>
 
                 </tree>
            </field>
@@ -153,7 +162,7 @@
         <record model="ir.actions.act_window" id="action_cattle">
             <field name="name">Cattle</field>
             <field name="res_model">cattle.detail</field>
-            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_mode">tree,form,kanban</field>
             <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create a cattle in your cattle detail

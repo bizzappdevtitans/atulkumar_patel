@@ -1,13 +1,10 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-cattle_management.access_cattle_administrator,access_cattle_administrator,cattle_management.model_cattle_administrator,base.group_user,1,1,1,1
-cattle_management.access_cattle_buyer,access_cattle_buyer,cattle_management.model_cattle_buyer,base.group_user,1,1,1,1
 cattle_management.access_cattle_detail,access_cattle_detail,cattle_management.model_cattle_detail,base.group_user,1,1,1,1
-cattle_management.access_cattle_news,access_cattle_news,cattle_management.model_cattle_news,base.group_user,1,1,1,1
-cattle_management.access_cattle_payment,access_cattle_payment,cattle_management.model_cattle_payment,base.group_user,1,1,1,1
-cattle_management.access_registration_detail,access_registration_detail,cattle_management.model_registration_detail,base.group_user,1,1,1,1
-cattle_management.access_cattle_seller,access_cattle_seller,cattle_management.model_cattle_seller,base.group_user,1,1,1,1
-
-cattle_management.access_cattle_sale_order_line,access_cattle_sale_order_line,cattle_management.model_cattle_sale_order_line,base.group_user,1,1,1,1
-cattle_management.access_cattle_sale_order,access_cattle_sale_order,cattle_management.model_cattle_sale_order,base.group_user,1,1,1,1
+cattle_management.access_cattle_health,access_cattle_health,cattle_management.model_cattle_health,base.group_user,1,1,1,1
+cattle_management.access_cattle_feed,access_cattle_feed,cattle_management.model_cattle_feed,base.group_user,1,1,1,1
+cattle_management.access_cattle_housing,access_cattle_housing,cattle_management.model_cattle_housing,base.group_user,1,1,1,1
+cattle_management.access_cattle_milk,access_cattle_milk,cattle_management.model_cattle_milk,base.group_user,1,1,1,1
+cattle_management.access_cattle_administrator,access_cattle_administrator,cattle_management.model_cattle_administrator,base.group_user,1,1,1,1
+cattle_management.access_cattle_doctor,access_cattle_doctor,cattle_management.model_cattle_doctor,base.group_user,1,1,1,1
 
 

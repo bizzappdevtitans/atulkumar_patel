@@ -9,8 +9,8 @@
          <menuitem id="cattle_sale_menu"
           name="Sell Cattle"
           parent="cattle_management_menu_root"
-         action="action_sell"/>
-         <!--  -->
+         />
+         <!-- action="action_sell" -->
 
 <!-- form tag start from here #T00316-->
 
@@ -23,6 +23,7 @@
 
                         <!-- Header tag start from here #T00316 -->
                         <button class="oe_highlight" type="object" name="create_sale_order" id="create_sale_order_open"  string="create and view sale order" icon="fa-icon"/>
+
                         <!-- <button class="oe_highlight" type="object" name="create_invoice" id="create_invoice_open"  string="create and view invoice" icon="fa-icon"/> -->
                         <button string="Cancel" class="btn btn-default" special="cancel" data-hotkey="z"/>
 
@@ -50,6 +51,40 @@
                 </form>
             </field>
         </record>
+         <record id="cattle_sale_order_line_view_form" model="ir.ui.view">
+            <field name="name">sale.order.line.view.form</field>
+            <field name="model">cattle.sale.order.line</field>
+            <field name="arch" type="xml">
+                <form string="Seller Menu">
+                    <sheet>
+                        <!-- sequence generator -->
+
+                            <group>
+                                <field name="cattle_id"/>
+                            </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+         <record id="cattle_purchase_order_line_view_form" model="ir.ui.view">
+            <field name="name">purchase.order.line.view.form</field>
+            <field name="model">cattle.purchase.order.line</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Menu">
+                    <sheet>
+                        <!-- sequence generator -->
+
+                            <group>
+                                <field name="cattle_id"/>
+                            </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
 
     <!-- action field #T00316-->
 

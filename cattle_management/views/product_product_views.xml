@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <data>
+    <!-- account move views form #T00316-->
+        <record id="product_product_view_form" model="ir.ui.view">
+            <field name="name">product.product.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                      <!-- this xpath add field in account move form view #T00316-->
+                    <page string="Cattle Detail">
+                    <group>
+                      <field name="cattle_breed"/>
+                      <field name="cattle_colour"/>
+                      <field name="cattle_weight"/>
+                      <field name="cattle_age"/>
+                    </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+  </data>
+</odoo>

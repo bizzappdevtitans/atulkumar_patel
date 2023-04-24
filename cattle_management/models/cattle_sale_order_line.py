@@ -10,6 +10,4 @@ class CattleSaleOrderLine(models.Model):
 
     order_id = fields.Many2one("cattle.sale.order", string="Sale Order")
     cattle_id = fields.Many2one("cattle.detail", string="Cattle", required=True)
-    price = fields.Float(
-        string="Price", related="cattle_id.price", readonly=True
-    )
+    price = fields.Float(string="Price", related="cattle_id.price", readonly=True)

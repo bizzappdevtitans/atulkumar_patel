@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+<!-- main menu of Cattle management module #T00316 -->
+        <menuitem id="cattle_management_menu_root"
+            name="Cattle Management"/>
+
+<!--created cattle feed  sub menu of cattle management #T00316 -->
+         <menuitem id="cattle_housing_menu"
+          name="Cattle Housing"
+          parent="cattle_management_menu_root"
+          action="action_cattle_housing"
+          groups = "group_cattle_management_cattle_housing"/>
+
+
+<!-- form tag start from here #T00316-->
+
+        <record id="cattle_housing_view_form" model="ir.ui.view">
+            <field name="name">cattle.housing.view.form</field>
+            <field name="model">cattle.housing</field>
+            <field name="arch" type="xml">
+                <form string="Cattle Housing">
+                    <sheet>
+
+                            <group>
+                                <field name="cattle_id"/>
+                                <field name="housing_area"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="duration"/>
+                            </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+<!-- tree tag start from here #T00316-->
+
+        <record id="cattle_housing_view_tree" model="ir.ui.view">
+            <field name="name">cattle.housing.view.tree</field>
+            <field name="model">cattle.housing</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="cattle_id"/>
+                    <field name="housing_area"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="duration"/>
+                </tree>
+           </field>
+        </record>
+
+ <!-- search views -->
+       <record id="cattle_housing_view_search" model="ir.ui.view">
+        <field name="name">cattle.housing.view.search</field>
+        <field name="model">cattle.housing</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="housing_area"/>
+                <group expand="0" string="Group By">
+                    <filter string="Housing Area" name="group_by_housing_area" context="{'group_by' : 'housing_area'}"/>
+
+                </group>
+            </search>
+          </field>
+        </record>
+
+
+    <!-- action field #T00316-->
+
+        <record model="ir.actions.act_window" id="action_cattle_housing">
+            <field name="name">Cattle Housing</field>
+            <field name="res_model">cattle.housing</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
+
+
+
+
+

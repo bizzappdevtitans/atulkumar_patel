@@ -16,10 +16,11 @@ class CattleSaleOrder(models.Model):
         string="State",
         default="draft",
     )
-    product_id = fields.Many2one("product.product")
+    cattle_id = fields.Many2one("cattle.detail", string="Cattle", required=True)
+
     invoice_id = fields.Many2one("account.move", string="Invoice", readonly=True)
 
-    def create_sale_order(self, context=None):
+    def create_sale_order(self):
         for record in self.order_line:
             if record.cattle_id.sold:
                 raise ValueError("Selected cattle Already sold")
@@ -30,7 +31,7 @@ class CattleSaleOrder(models.Model):
                     0,
                     0,
                     {
-                        "product_id": record.cattle_id.id,
+                        "product_id": record.id,
                         "name": record.cattle_id.cattle_name,
                         "cattle_age": record.cattle_id.cattle_age,
                         "cattle_weight": record.cattle_id.cattle_weight,
@@ -44,6 +45,7 @@ class CattleSaleOrder(models.Model):
             ],
         }
         sale_order = self.env["sale.order"].create(order_vals)
+        sale_order.action_confirm()
         self.write({"state": "confirmed"})
         return {
             "name": "Sale Order",
@@ -53,6 +55,33 @@ class CattleSaleOrder(models.Model):
             "type": "ir.actions.act_window",
             "target": "current",
         }
+
+    def action_purchase_cattle(self):
+        for cattle in self.order_line:
+            purchase_order = self.env["purchase.order"].create(
+                {
+                    "partner_id": self.partner_id.id,
+                    "order_line": [
+                        (
+                            0,
+                            0,
+                            {
+                                "product_id": cattle.cattle_id.id,
+                                "product_qty": 1,
+                                "price_unit": cattle.cattle_id.price,
+                                "name": cattle.cattle_id.cattle_name,
+                            },
+                        )
+                    ],
+                }
+            )
+            purchase_order.button_confirm()
+            picking = self.env["stock.picking"].search(
+                [{"origin", "=", purchase_order.name}], limit=1
+            )
+            if picking:
+                picking.action_assign()
+                picking.action_done()
 
     # def create_invoice(self):
     #     invoice_lines = [
@@ -82,25 +111,24 @@ class CattleSaleOrder(models.Model):
     #         "res_id": invoice.id,
     #         "type": "ir.actions.act_window",
     #         "target": "current",
-    # }
+    #     }
 
     # def delivery_order(self):
-    #    for record in self.order_line:
-    #        delivery = self.env["stock.picking"].create(
-    #            {
+    #     for record in self.order_line:
+    #         delivery = self.env["stock.picking"].create(
+    #             {
+    #                 "move_ids_without_package": [
+    #                     (
+    #                         0,
+    #                         0,
+    #                         {
+    #                             "product_id": record.cattle_id.id,
+    #                             "product_uom_qty": 1,
+    #                             "picking_type_id": 1,
+    #                         },
+    #                     )
+    #                 ],
+    #             }
+    #         )
 
-    #                "move_ids_without_package": [
-    #                    (
-    #                        0,
-    #                        0,
-    #                        {
-    #                            "product_id": record.cattle_id.id,
-    #                            "product_uom_qty": 1,
-    #                            "picking_type_id": 1,
-    #                        },
-    #                    )
-    #                ],
-    #            }
-    #        )
-
-    #        return delivery
+    #         return delivery
