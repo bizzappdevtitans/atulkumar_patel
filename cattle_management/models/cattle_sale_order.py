@@ -21,6 +21,7 @@ class CattleSaleOrder(models.Model):
     invoice_id = fields.Many2one("account.move", string="Invoice", readonly=True)
 
     def create_sale_order(self):
+        """ This method will create sale order in cattle management module #T00316"""
         for record in self.order_line:
             if record.cattle_id.sold:
                 raise ValueError("Selected cattle Already sold")
@@ -82,53 +83,3 @@ class CattleSaleOrder(models.Model):
             if picking:
                 picking.action_assign()
                 picking.action_done()
-
-    # def create_invoice(self):
-    #     invoice_lines = [
-    #         (
-    #             0,
-    #             0,
-    #             {
-    #                 "product_id": line.cattle_id.id,
-    #                 "name": line.cattle_id.cattle_name,
-    #                 "quantity": 1,
-    #                 "price_unit": line.cattle_id.price,
-    #                 "account_id": self.partner_id.property_account_receivable_id.id,
-    #             },
-    #         )
-    #         for line in self.order_line
-    #     ]
-    #     invoice_vals = {
-    #         "partner_id": self.partner_id.id,
-    #         "invoice_line_ids": invoice_lines,
-    #     }
-    #     invoice = self.env["account.move"].create(invoice_vals)
-    #     self.write({"state": "invoiced", "invoice_id": invoice.id})
-    #     return {
-    #         "name": "Invoice",
-    #         "view_mode": "form",
-    #         "res_model": "account.move",
-    #         "res_id": invoice.id,
-    #         "type": "ir.actions.act_window",
-    #         "target": "current",
-    #     }
-
-    # def delivery_order(self):
-    #     for record in self.order_line:
-    #         delivery = self.env["stock.picking"].create(
-    #             {
-    #                 "move_ids_without_package": [
-    #                     (
-    #                         0,
-    #                         0,
-    #                         {
-    #                             "product_id": record.cattle_id.id,
-    #                             "product_uom_qty": 1,
-    #                             "picking_type_id": 1,
-    #                         },
-    #                     )
-    #                 ],
-    #             }
-    #         )
-
-    #         return delivery

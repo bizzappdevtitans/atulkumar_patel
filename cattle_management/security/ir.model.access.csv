@@ -1,10 +1,30 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
 cattle_management.access_cattle_detail,access_cattle_detail,cattle_management.model_cattle_detail,base.group_user,1,1,1,1
+cattle_management.access_cattle_detail,access_cattle_detail,cattle_management.model_cattle_detail,cattle_management.group_cattle_management_cattle_detail,1,0,0,0
+
+
 cattle_management.access_cattle_health,access_cattle_health,cattle_management.model_cattle_health,base.group_user,1,1,1,1
+cattle_management.access_cattle_health,access_cattle_health,cattle_management.model_cattle_health,cattle_management.group_cattle_management_cattle_health,1,0,0,0
+
+
 cattle_management.access_cattle_feed,access_cattle_feed,cattle_management.model_cattle_feed,base.group_user,1,1,1,1
+cattle_management.access_cattle_feed,access_cattle_feed,cattle_management.model_cattle_feed,cattle_management.group_cattle_management_cattle_feed,1,0,0,0
+
+
 cattle_management.access_cattle_housing,access_cattle_housing,cattle_management.model_cattle_housing,base.group_user,1,1,1,1
+cattle_management.access_cattle_housing,access_cattle_housing,cattle_management.model_cattle_housing,cattle_management.group_cattle_management_cattle_housing,1,0,0,0
+
+
 cattle_management.access_cattle_milk,access_cattle_milk,cattle_management.model_cattle_milk,base.group_user,1,1,1,1
+cattle_management.access_cattle_milk,access_cattle_milk,cattle_management.model_cattle_milk,cattle_management.group_cattle_management_cattle_milk,1,0,0,0
+
+
 cattle_management.access_cattle_administrator,access_cattle_administrator,cattle_management.model_cattle_administrator,base.group_user,1,1,1,1
+cattle_management.access_cattle_administrator,access_cattle_administrator,cattle_management.model_cattle_administrator,cattle_management.group_cattle_management_cattle_admin,1,0,0,0
+
+
 cattle_management.access_cattle_doctor,access_cattle_doctor,cattle_management.model_cattle_doctor,base.group_user,1,1,1,1
+cattle_management.access_cattle_doctor,access_cattle_doctor,cattle_management.model_cattle_doctor,cattle_management.group_cattle_management_cattle_doctor,1,0,0,0
 
 

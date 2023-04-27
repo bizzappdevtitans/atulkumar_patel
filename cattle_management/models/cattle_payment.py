@@ -27,14 +27,14 @@ class CattlePayment(models.Model):
 
     def _amount_total(self):
         """
-        Compute the total amounts of the cattle.
+        Compute the total amounts of the cattle #T00316
         """
         total = 0.0
         for count in self.cattle_ids:
             total += count.cattle_price
         self.amount = total
 
-    # created this model to generate sequence no
+    # created this model to generate sequence no #T00316
 
     @api.model
     def create(self, vals):

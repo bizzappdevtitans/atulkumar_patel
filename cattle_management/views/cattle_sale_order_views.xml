@@ -24,7 +24,7 @@
                         <!-- Header tag start from here #T00316 -->
                         <button class="oe_highlight" type="object" name="create_sale_order" id="create_sale_order_open"  string="create and view sale order" icon="fa-icon"/>
 
-                        <!-- <button class="oe_highlight" type="object" name="create_invoice" id="create_invoice_open"  string="create and view invoice" icon="fa-icon"/> -->
+
                         <button string="Cancel" class="btn btn-default" special="cancel" data-hotkey="z"/>
 
                         <field name="state" widget="statusbar" nolable="1" options="{'clickable':'1'}"/>
@@ -34,7 +34,7 @@
 
                             <group>
                                 <field name="partner_id"/>
-                                <!-- <field name="invoice_id"/> -->
+
                             </group>
                         <!-- Notebook tag start from here #T00316 -->
                         <notebook>
