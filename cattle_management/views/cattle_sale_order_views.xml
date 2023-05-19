@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+<!-- main menu of Cattle management module #T00316 -->
+        <menuitem id="cattle_management_menu_root"
+            name="Cattle Management"/>
+
+<!--created Buyer  sub menu of cattle management #T00316 -->
+         <menuitem id="cattle_sale_menu"
+          name="Sell Cattle"
+          parent="cattle_management_menu_root"
+         />
+         <!-- action="action_sell" -->
+
+<!-- form tag start from here #T00316-->
+
+        <record id="cattle_sale_order_view_form" model="ir.ui.view">
+            <field name="name">cattle.sale.view.form</field>
+            <field name="model">cattle.sale.order</field>
+            <field name="arch" type="xml">
+                <form string="Seller Menu">
+                    <header>
+
+                        <!-- Header tag start from here #T00316 -->
+                        <button class="oe_highlight" type="object" name="create_sale_order" id="create_sale_order_open"  string="create and view sale order" icon="fa-icon"/>
+
+
+                        <button string="Cancel" class="btn btn-default" special="cancel" data-hotkey="z"/>
+
+                        <field name="state" widget="statusbar" nolable="1" options="{'clickable':'1'}"/>
+                    </header>
+
+                    <sheet>
+
+                            <group>
+                                <field name="partner_id"/>
+
+                            </group>
+                        <!-- Notebook tag start from here #T00316 -->
+                        <notebook>
+                                <page string="Order Line">
+                                    <form>
+                                     <!-- Added sale line id one to many field #T00316 -->
+                                        <field name="order_line"/>
+
+                                    </form>
+                                </page>
+                        </notebook>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+         <record id="cattle_sale_order_line_view_form" model="ir.ui.view">
+            <field name="name">sale.order.line.view.form</field>
+            <field name="model">cattle.sale.order.line</field>
+            <field name="arch" type="xml">
+                <form string="Seller Menu">
+                    <sheet>
+                        <!-- sequence generator -->
+
+                            <group>
+                                <field name="cattle_id"/>
+                            </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+         <record id="cattle_purchase_order_line_view_form" model="ir.ui.view">
+            <field name="name">purchase.order.line.view.form</field>
+            <field name="model">cattle.purchase.order.line</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Menu">
+                    <sheet>
+                        <!-- sequence generator -->
+
+                            <group>
+                                <field name="cattle_id"/>
+                            </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+
+    <!-- action field #T00316-->
+
+        <record model="ir.actions.act_window" id="action_sell">
+            <field name="name">Sell</field>
+            <field name="res_model">cattle.sale.order</field>
+            <field name="view_mode">form</field>
+        </record>
+    </data>
+</odoo>

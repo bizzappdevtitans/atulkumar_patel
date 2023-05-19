@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+<!-- main menu of Cattle management module #T00316 -->
+        <menuitem id="cattle_management_menu_root"
+            name="Cattle Management"/>
+
+<!--created cattle feed  sub menu of cattle management #T00316 -->
+         <menuitem id="cattle_feed_menu"
+          name="Cattle Feed"
+          parent="cattle_management_menu_root"
+          action="action_cattle_feed"
+          groups = "group_cattle_management_cattle_feed"/>
+
+
+<!-- form tag start from here #T00316-->
+
+        <record id="cattle_feed_view_form" model="ir.ui.view">
+            <field name="name">cattle.feed.view.form</field>
+            <field name="model">cattle.feed</field>
+            <field name="arch" type="xml">
+                <form string="Cattle Feed">
+                    <sheet>
+
+                            <group>
+                                <field name="cattle_id"/>
+                                <field name="start_feeding_date"/>
+                                <field name="last_feeding_date"/>
+                                <field name="total_feeding_days"/>
+                                <field name="feed_type"/>
+                                <field name="feed_quantity"/>
+                                <field name="total_feed_consumed"/>
+                            </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+<!-- tree tag start from here #T00316-->
+
+        <record id="cattle_feed_view_tree" model="ir.ui.view">
+            <field name="name">cattle.feed.view.tree</field>
+            <field name="model">cattle.feed</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="cattle_id"/>
+                    <field name="feed_type"/>
+                    <field name="start_feeding_date"/>
+                    <field name="last_feeding_date"/>
+                    <field name="total_feeding_days"/>
+                    <field name="feed_quantity"/>
+                    <field name="total_feed_consumed"/>
+                </tree>
+           </field>
+        </record>
+
+ <!-- search views -->
+       <record id="cattle_feed_view_search" model="ir.ui.view">
+        <field name="name">cattle.feed.view.search</field>
+        <field name="model">cattle.feed</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="feed_type"/>
+                 <group expand="0" string="Group By">
+                    <filter string="Feed Type" name="group_by_feed_type" context="{'group_by' : 'feed_type'}"/>
+
+                </group>
+            </search>
+          </field>
+        </record>
+
+
+    <!-- action field #T00316-->
+
+        <record model="ir.actions.act_window" id="action_cattle_feed">
+            <field name="name">Cattle Feed</field>
+            <field name="res_model">cattle.feed</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
+
+
+

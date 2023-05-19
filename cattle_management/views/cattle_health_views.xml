@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+<!-- main menu of Cattle management module #T00316 -->
+        <menuitem id="cattle_management_menu_root"
+            name="Cattle Management"/>
+
+<!--created cattle health  sub menu of cattle management #T00316 -->
+         <menuitem id="cattle_health_menu"
+          name="Cattle Health"
+          parent="cattle_management_menu_root"
+          action="action_cattle_health"
+          groups = "group_cattle_management_cattle_health"/>
+
+
+<!-- form tag start from here #T00316-->
+
+        <record id="cattle_health_view_form" model="ir.ui.view">
+            <field name="name">cattle.health.view.form</field>
+            <field name="model">cattle.health</field>
+            <field name="arch" type="xml">
+                <form string="Cattle Health">
+                    <sheet>
+                            <group>
+                                <field name="cattle_id"/>
+                                <field name="health_issue"/>
+                                <field name="diagnosis_date"/>
+                                <field name="recovery_date"/>
+                                <field name="veterinarian"/>
+                                <field name="total_health_issues"/>
+                            </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+<!-- tree tag start from here #T00316-->
+
+        <record id="cattle_health_view_tree" model="ir.ui.view">
+            <field name="name">cattle.health.view.tree</field>
+            <field name="model">cattle.health</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="cattle_id"/>
+                    <field name="health_issue"/>
+                    <field name="diagnosis_date"/>
+                    <field name="recovery_date"/>
+                    <field name="veterinarian"/>
+                    <field name="total_health_issues"/>
+                </tree>
+           </field>
+        </record>
+
+
+  <!-- search views -->
+       <record id="cattle_health_view_search" model="ir.ui.view">
+        <field name="name">cattle.health.view.search</field>
+        <field name="model">cattle.health</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="health_issue"/>
+                <group expand="0" string="Group By">
+                    <filter string="Health Issue" name="group_by_health_issue" context="{'group_by' : 'health_issue'}"/>
+
+                </group>
+            </search>
+          </field>
+        </record>
+    <!-- action field #T00316-->
+
+        <record model="ir.actions.act_window" id="action_cattle_health">
+            <field name="name">Cattle Health</field>
+            <field name="res_model">cattle.health</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
+
+

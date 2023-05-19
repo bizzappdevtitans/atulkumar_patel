@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+     <record model="ir.module.category" id="module_category_cattle_management">
+             <field name="name">Cattle Management</field>
+             <field name="sequence">5</field>
+
+     </record>
+
+    <record id="group_cattle_management_cattle_detail" model="res.groups">
+        <field name="name">Cattle Detail</field>
+        <field name="category_id" ref="module_category_cattle_management"/>
+
+    </record>
+
+    <record id="group_cattle_management_cattle_admin" model="res.groups">
+        <field name="name">Cattle Administrator</field>
+        <field name="category_id" ref="module_category_cattle_management"/>
+    </record>
+
+    <record id="group_cattle_management_cattle_doctor" model="res.groups">
+        <field name="name">Cattle Doctor</field>
+        <field name="category_id" ref="module_category_cattle_management"/>
+
+    </record>
+
+     <record id="group_cattle_management_cattle_feed" model="res.groups">
+        <field name="name">Cattle Feed</field>
+        <field name="category_id" ref="module_category_cattle_management"/>
+
+    </record>
+
+
+        <record id="group_cattle_management_cattle_health" model="res.groups">
+            <field name="name">Cattle Health</field>
+            <field name="category_id" ref="module_category_cattle_management"/>
+        </record>
+
+    <record id="group_cattle_management_cattle_housing" model="res.groups">
+        <field name="name">Cattle Housing</field>
+        <field name="category_id" ref="module_category_cattle_management"/>
+
+    </record>
+        <record id="group_cattle_management_cattle_milk" model="res.groups">
+        <field name="name">Cattle Milk</field>
+        <field name="category_id" ref="module_category_cattle_management"/>
+
+    </record>
+
+</odoo>

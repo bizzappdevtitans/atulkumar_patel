@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="cattle_doctor_seq" model="ir.sequence">
+             <field name="name">Cattle Doctor</field>
+             <field name="code">cattle.doctor</field>
+             <field name="prefix">D</field>
+             <field eval ="4" name="padding"/>
+
+        </record>
+
+        <record id="cattle_detail_seq" model="ir.sequence">
+             <field name="name">Cattle Detail</field>
+             <field name="code">cattle.detail</field>
+             <field name="prefix">C</field>
+             <field eval ="4" name="padding"/>
+
+        </record>
+
+
+
+        <record id="Cattle_admin_seq" model="ir.sequence">
+             <field name="name">Cattle Admin</field>
+             <field name="code">cattle.administrator</field>
+             <field name="prefix">A</field>
+             <field eval ="4" name="padding"/>
+
+        </record>
+
+    </data>
+</odoo>
+

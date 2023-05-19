@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+<!-- main menu of Cattle management module #T00316 -->
+        <menuitem id="cattle_management_menu_root"
+            name="Cattle Management"/>
+
+<!--created cattle doctor  sub menu of cattle management #T00316 -->
+         <menuitem id="cattle_admin_menu"
+          name="Cattle Admin"
+          parent="cattle_management_menu_root"
+          action="action_cattle_admin"
+          groups = "group_cattle_management_cattle_admin"/>
+
+
+<!-- form tag start from here #T00316-->
+
+        <record id="cattle_admin_view_form" model="ir.ui.view">
+            <field name="name">cattle.admin.view.form</field>
+            <field name="model">cattle.administrator</field>
+            <field name="arch" type="xml">
+                <form string="Cattle Admin">
+                    <sheet>
+                        <h2>
+                            <field name="admin_seq"/>
+                        </h2>
+                            <group>
+                                <field name="name"/>
+                                <field name="address"/>
+                                <field name="gender"/>
+                                <field name="mobile_number" widget="phone"/>
+                                <field name="e_mail"/>
+                            </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+<!-- tree tag start from here #T00316-->
+
+        <record id="cattle_admin_view_tree" model="ir.ui.view">
+            <field name="name">cattle.admin.view.tree</field>
+            <field name="model">cattle.administrator</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="address"/>
+                    <field name="gender"/>
+                    <field name="mobile_number" widget="phone"/>
+                    <field name="e_mail"/>
+                </tree>
+           </field>
+        </record>
+
+    <!-- action field #T00316-->
+
+        <record model="ir.actions.act_window" id="action_cattle_admin">
+            <field name="name">Cattle Admin</field>
+            <field name="res_model">cattle.administrator</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>
+
+
+
+
