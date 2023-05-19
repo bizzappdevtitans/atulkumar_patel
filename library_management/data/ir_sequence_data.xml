@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+
+
+         <record id="readers_detail_seq" model="ir.sequence">
+             <field name="name">Reader Detail</field>
+             <field name="code">readers.detail</field>
+             <field name="prefix">R</field>
+             <field eval ="4" name="padding"/>
+
+      </record>
+
+
+       <record id="library_management_seq" model="ir.sequence">
+             <field name="name">Library </field>
+             <field name="code">library.management</field>
+             <field name="prefix">L</field>
+             <field eval ="4" name="padding"/>
+
+      </record>
+
+
+       <record id="books_detail_seq" model="ir.sequence">
+             <field name="name">Books Detail </field>
+             <field name="code">books.detail</field>
+             <field name="prefix">B</field>
+             <field eval ="4" name="padding"/>
+
+      </record>
+
+       <record id="library_report_seq" model="ir.sequence">
+             <field name="name">Library Report </field>
+             <field name="code">library.report</field>
+             <field name="prefix">R</field>
+             <field eval ="4" name="padding"/>
+
+      </record>
+
+
+       <record id="borrow_books_seq" model="ir.sequence">
+             <field name="name">Library Report </field>
+             <field name="code">borrow.books</field>
+             <field name="prefix">B</field>
+             <field eval ="5" name="padding"/>
+
+      </record>
+    </data>
+</odoo>
+

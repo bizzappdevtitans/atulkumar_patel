@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+    <!-- main menu of libary management module -->
+        <menuitem id="library_management_menu_root"
+            name="Library Management"/>
+
+    <!--created  books detail sub menu of library management  -->
+         <menuitem id="books_detail_menu"
+          name="Books detail"
+          groups="group_library_management_books"
+          parent="library_management_menu_root"
+          action="action_books_detail"/>
+
+
+<!-- form tag start from here-->
+
+         <record id="books_detail_view_form" model="ir.ui.view">
+            <field name="name">books.detail.view.form</field>
+            <field name="model">books.detail</field>
+            <field name="arch" type="xml">
+                <form string="Books detail">
+                    <sheet>
+                        <!-- sequence generator -->
+                        <h2>
+                             <field name="book_seq"/>
+                         </h2>
+
+                         <!-- group tag -->
+                        <group string="Books detail">
+                            <group>
+                                <field name="img"/>
+                                <field name="title" string="Title"/>
+                                <field name="author" string="Author"/>
+                                <field name="publisher" string="Publisher"/>
+                                <field name="publication_year" string="Publication Year"/>
+                                <field name="isbn" string="ISBN"/>
+                                <field name="genre" string="Genre"/>
+                                <field name="borrow_ids" string="Borrow Id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!-- tree tag start from here-->
+
+      <record id="books_detail_view_tree" model="ir.ui.view">
+         <field name="name">books.detail.view.tree</field>
+         <field name="model">books.detail</field>
+         <field name="arch" type="xml">
+             <tree>
+                <field name="title" string="Title"/>
+                <field name="author" string="Author"/>
+                <field name="publisher" string="Publisher"/>
+                <field name="publication_year" string="Publication Year"/>
+                <field name="isbn" string="ISBN"/>
+                <field name="genre" string="Genre"/>
+             </tree>
+         </field>
+      </record>
+
+<!-- kanban view start from here -->
+
+      <record id="books_detail_kanban_view" model="ir.ui.view">
+            <field name="name">books.detail.view.kanban</field>
+            <field name="model">books.detail</field>
+            <field name="arch" type="xml">
+
+             <!-- kanban tag starts from here -->
+                <kanban class="o_res_partner_kanban">
+                    <field name="id"/>
+                    <field name="title" string="Title"/>
+                    <field name="author" string="Author"/>
+                    <field name="publisher" string="Publisher"/>
+                    <field name="publication_year" string="Publication Year"/>
+                    <field name="isbn" string="ISBN"/>
+                    <field name="genre" string="Genre"/>
+
+                    <!-- template tag starts from here -->
+                        <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+
+                                <!-- div tag to add image in kanban view -->
+                                <div class="o_kanban_image">
+
+                                    <img alt="Avatar" t-att-src="kanban_image('books.detail', 'img',record.id.raw_value)"/>
+                                </div>
+
+                                <!-- kanban view fields -->
+                                <div class="oe_kanban_details">
+                                        <strong class="o_kanban_record_title">
+                                            <h2>
+                                                <field name="title"/>
+                                            </h2>
+                                        </strong>
+
+                                        <div t-if="record.author.value">
+                                            <h6>  Author: </h6>  <t t-esc="record.author.value"/>
+                                        </div>
+
+                                        <div t-if="record.publisher.value">
+                                            <h6> Publisher: </h6>  <t t-esc="record.publisher.value"/>
+                                        </div>
+
+                                        <div t-if="record.publication_year.value">
+
+                                            <h6> Publication: </h6> <t t-esc="record.publication_year.value"/>
+                                        </div>
+
+                                        <div t-if="record.genre.value">
+
+                                            <h6> Genre: </h6> <t t-esc="record.genre.value"/>
+                                        </div>
+                                        <div t-if="record.isbn.value">
+
+                                            <h6> ISBN: </h6> <t t-esc="record.isbn.value"/>
+                                        </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                    <!-- template tag end here -->
+                </kanban>
+                <!-- kanban tag end here -->
+            </field>
+        </record>
+
+
+    <!-- action field -->
+
+      <record model="ir.actions.act_window" id="action_books_detail">
+            <field name="name">Books Detail</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">books.detail</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a book in your books detail
+            </p>
+        </field>
+        </record>
+    </data>
+</odoo>
+
+
+
+
+
+
+
